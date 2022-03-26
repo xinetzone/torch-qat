@@ -4,6 +4,7 @@
 ```{toctree}
 :maxdepth: 3
 
+intro
 best-practice
 confuse
 config
