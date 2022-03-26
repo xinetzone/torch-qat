@@ -128,6 +128,7 @@ autosummary_generate = True
 html_theme_options = {
     "footer_items": ["copyright", "last-updated", "sphinx-version", ],
     "repository_url": "https://github.com/xinetzone/torch-quantization",
+    "repository_branch": "main",
     "use_edit_page_button": True,
 }
 
