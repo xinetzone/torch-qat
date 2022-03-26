@@ -127,13 +127,13 @@ napoleon_attr_annotations = True
 autosummary_generate = True
 html_theme_options = {
     "footer_items": ["copyright", "last-updated", "sphinx-version", ],
-    "github_url": "https://github.com/xinetzone/torch-qat",
+    "github_url": "https://github.com/xinetzone/torch-quantization",
     "use_edit_page_button": True,
 }
 
 html_context = {
     "github_user": "xinetzone",
-    "github_repo": "torch_qat",
+    "github_repo": "torch-quantization",
     "github_version": "main",
     "doc_path": "docs",
 }
