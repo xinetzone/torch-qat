@@ -12,7 +12,7 @@ requires-python = ">=3.8"
 
 dependencies = [
   "d2py",
-  "pydata_sphinx_theme"
+  "sphinx-book-theme"
 ]
 
 maintainers = [
@@ -38,6 +38,8 @@ doc = [
   "pytest-regressions",
   "sphinxext-rediraffe",
   "sphinx_copybutton",
+  "sphinx-panels"
+  # "sphinx-tabs"
 ]
 
 coverage = [

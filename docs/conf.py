@@ -19,8 +19,10 @@ extensions = [
     'sphinx_copybutton',
     'sphinx.ext.autosummary',
     'sphinx.ext.viewcode',
-    # 'sphinx.ext.autosectionlabel',
+    'sphinx.ext.autosectionlabel',
     'sphinx.ext.napoleon',
+    'sphinx_panels',
+    # 'sphinx_tabs.tabs',
 ]
 
 # Add any paths that contain templates here, relative to this directory.
@@ -129,12 +131,9 @@ html_theme_options = {
     "footer_items": ["copyright", "last-updated", "sphinx-version", ],
     "repository_url": "https://github.com/xinetzone/torch-quantization",
     "repository_branch": "main",
+    "path_to_docs": "docs/",
     "use_edit_page_button": True,
+    "toc_title": "导航",
 }
 
-html_context = {
-    "github_user": "xinetzone",
-    "github_repo": "torch-quantization",
-    "github_version": "main",
-    "doc_path": "docs",
-}
+panels_add_bootstrap_css = False
