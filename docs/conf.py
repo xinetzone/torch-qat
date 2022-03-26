@@ -1,6 +1,6 @@
 # -- Project information -----------------------------------------------------
 
-project = 'xyzstyle'
+project = 'torch_qat'
 copyright = '2022, xinetzone'
 author = 'xinetzone'
 
@@ -44,8 +44,7 @@ exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store']
 # The theme to use for HTML and HTML Help pages.  See the documentation for
 # a list of builtin themes.
 #
-html_theme = 'xyzstyle'
-html_theme_path = ['../src/themes']
+html_theme = 'sphinx_book_theme'
 
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,
@@ -69,6 +68,11 @@ intersphinx_mapping = {
     'python': ('https://daobook.github.io/cpython/', None),
     'sphinx': ('https://daobook.github.io/sphinx/', None),
     'peps': ('https://daobook.github.io/peps', None),
+    'pytorch': ('https://pytorch.org/docs/stable', None),
+    'pytorchx': ("https://xinetzone.github.io/pytorch-book/api", None),
+    'torchvision': ('https://pytorch.org/vision/stable', None),
+    'torchtext': ('https://pytorch.org/text/stable/', None),
+    'torchaudio': ('https://pytorch.org/audio/stable/', None)
 }
 
 
@@ -123,13 +127,13 @@ napoleon_attr_annotations = True
 autosummary_generate = True
 html_theme_options = {
     "footer_items": ["copyright", "last-updated", "sphinx-version", ],
-    "github_url": "https://github.com/xinetzone/xyzstyle",
+    "github_url": "https://github.com/xinetzone/torch-qat",
     "use_edit_page_button": True,
 }
 
 html_context = {
     "github_user": "xinetzone",
-    "github_repo": "xyzstyle",
+    "github_repo": "torch_qat",
     "github_version": "main",
     "doc_path": "docs",
 }

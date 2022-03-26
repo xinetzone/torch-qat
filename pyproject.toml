@@ -6,7 +6,7 @@ requires = ["flit_core >=3.4,<4"]
 authors = [{name = "xinetzone", email = "735613050@qq.com"}]
 dynamic = ["version", "description"]
 license = {file = "LICENSE"}
-name = "xyzstyle"
+name = "torchq"
 readme = "README.md"
 requires-python = ">=3.8"
 
@@ -29,7 +29,7 @@ classifiers = [
 ]
 
 [project.urls]
-Home = "https://github.com/xinetzone/xyzstyle"
+Home = "https://github.com/xinetzone/torch-qat"
 
 [project.optional-dependencies]
 doc = [
@@ -43,20 +43,20 @@ doc = [
 coverage = [
   "pytest-cov",
   "codecov",
-  "xyzstyle[test]",
+  "torchq[test]",
 ]
 dev = [
   "pyyaml",
   "pre-commit",
-  "xyzstyle[coverage]",
+  "torchq[coverage]",
 ]
 test = [
   "pytest",
-  "xyzstyle[doc]",
+  "torchq[doc]",
 ]
 
-[project.entry-points]
-"sphinx.html_themes" = {xyzstyle = "xyzstyle"}
+# [project.entry-points]
+# "sphinx.html_themes" = {torchq = "torchq"}
 
 [tool.flit.sdist]
 # include = ["docs/"]

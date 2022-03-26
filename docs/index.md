@@ -4,7 +4,10 @@
 ```{toctree}
 :maxdepth: 2
 
+best-practice
+confuse
 config
+train
 ```
 
 ## 目录和索引

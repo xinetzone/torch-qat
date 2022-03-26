@@ -1,11 +1,11 @@
-# xyzstyle
+# PyTorch 下的 QAT 教程
 
-[![PyPI](https://img.shields.io/pypi/v/xyzstyle.svg)](https://pypi.org/project/xyzstyle/) [![GitHub issues](https://img.shields.io/github/issues/xinetzone/xyzstyle)](https://github.com/xinetzone/xyzstyle/issues) [![GitHub forks](https://img.shields.io/github/forks/xinetzone/xyzstyle)](https://github.com/xinetzone/xyzstyle/network) [![GitHub stars](https://img.shields.io/github/stars/xinetzone/xyzstyle)](https://github.com/xinetzone/xyzstyle/stargazers) [![GitHub license](https://img.shields.io/github/license/xinetzone/xyzstyle)](https://github.com/xinetzone/xyzstyle/blob/main/LICENSE) ![repo size](https://img.shields.io/github/repo-size/xinetzone/xyzstyle.svg) [![contributors](https://img.shields.io/github/contributors/xinetzone/xyzstyle.svg)](https://github.com/xinetzone/xyzstyle/graphs/contributors) [![watcher](https://img.shields.io/github/watchers/xinetzone/xyzstyle.svg)](https://github.com/xinetzone/xyzstyle/watchers) [![watcher](https://img.shields.io/github/watchers/xinetzone/pytorch-book.svg)](https://github.com/xinetzone/pytorch-book/watchers) [![Downloads](https://pepy.tech/badge/xyzstyle/week)](https://pepy.tech/project/xyzstyle)
+[![PyPI](https://img.shields.io/pypi/v/torch-quantization.svg)](https://pypi.org/project/torch-quantization/) [![GitHub issues](https://img.shields.io/github/issues/xinetzone/torch-quantization)](https://github.com/xinetzone/torch-quantization/issues) [![GitHub forks](https://img.shields.io/github/forks/xinetzone/torch-quantization)](https://github.com/xinetzone/torch-quantization/network) [![GitHub stars](https://img.shields.io/github/stars/xinetzone/torch-quantization)](https://github.com/xinetzone/torch-quantization/stargazers) [![GitHub license](https://img.shields.io/github/license/xinetzone/torch-quantization)](https://github.com/xinetzone/torch-quantization/blob/main/LICENSE) ![repo size](https://img.shields.io/github/repo-size/xinetzone/torch-quantization.svg) [![contributors](https://img.shields.io/github/contributors/xinetzone/torch-quantization.svg)](https://github.com/xinetzone/torch-quantization/graphs/contributors) [![watcher](https://img.shields.io/github/watchers/xinetzone/torch-quantization.svg)](https://github.com/xinetzone/torch-quantization/watchers) [![watcher](https://img.shields.io/github/watchers/xinetzone/pytorch-book.svg)](https://github.com/xinetzone/pytorch-book/watchers) [![Downloads](https://pepy.tech/badge/torch-quantization/week)](https://pepy.tech/project/torch-quantization)
 
 ## 支持 PyPI
 
-需要安装 `xyzstyle` 包：
+需要安装 `torchq` 包：
 
 ```shell
-pip install xyzstyle
+pip install torchq
 ```
