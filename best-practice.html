@@ -26,6 +26,8 @@
     <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/default.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
     
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
@@ -184,7 +186,7 @@ title="Fullscreen mode"
   </span>
 
 </button>
-<a href="https://github.com/xinetzone/torch-quantization/edit/main/best-practice.md"
+<a href="https://github.com/xinetzone/torch-quantization/edit/main/docs/best-practice.md"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="bottom"
@@ -261,7 +263,7 @@ title="Print to PDF"
 <!-- Table of contents -->
 <div class="col-md-3 bd-toc show noprint">
     <div class="tocsection onthispage pt-5 pb-3">
-        <i class="fas fa-list"></i> Contents
+        <i class="fas fa-list"></i> 导航
     </div>
     <nav id="bd-toc-nav" aria-label="Page">
         <ul class="visible nav section-nav flex-column">
@@ -275,7 +277,39 @@ title="Print to PDF"
      算子替换
     </a>
    </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id3">
+     算子融合
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id4">
+     示例
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#resnet">
+       改造 ResNet
+      </a>
+     </li>
+    </ul>
+   </li>
   </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id5">
+   量化配置
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id6">
+   量化训练
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#mobilenetv2">
+   实战 MobileNetv2
+  </a>
  </li>
 </ul>
 
@@ -292,7 +326,7 @@ title="Print to PDF"
                     <div id="jb-print-toc">
                         
                         <div>
-                            <h2> Contents </h2>
+                            <h2> 导航 </h2>
                         </div>
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
@@ -306,7 +340,39 @@ title="Print to PDF"
      算子替换
     </a>
    </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id3">
+     算子融合
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id4">
+     示例
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#resnet">
+       改造 ResNet
+      </a>
+     </li>
+    </ul>
+   </li>
   </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id5">
+   量化配置
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id6">
+   量化训练
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#mobilenetv2">
+   实战 MobileNetv2
+  </a>
  </li>
 </ul>
 
@@ -334,8 +400,8 @@ title="Print to PDF"
 <p class="rubric">模块融合阶段</p>
 <p>将已有模型 <code class="docutils literal notranslate"><span class="pre">float_model</span></code> 改造为可量化模型 <code class="docutils literal notranslate"><span class="pre">quantizable_model</span></code>，需要做如下工作：</p>
 <ol class="simple">
-<li><p>替换 <code class="docutils literal notranslate"><span class="pre">float_model</span></code> 的部分算子，比如 <a class="reference external" href="https://pytorch.org/docs/stable/generated/torch.add.html#torch.add" title="(在 PyTorch v1.11.0)"><code class="xref py py-func docutils literal notranslate"><span class="pre">torch.add()</span></code></a> 替换为 <a class="reference external" href="https://xinetzone.github.io/pytorch-book/api/pytorch/nn/generated/torch.nn.quantized.FloatFunctional.html#torch.nn.quantized.FloatFunctional" title="(在 Pytorch Book)"><code class="xref py py-class docutils literal notranslate"><span class="pre">FloatFunctional</span></code></a>.<code class="xref py py-func docutils literal notranslate"><span class="pre">add()</span></code>，<a class="reference external" href="https://pytorch.org/docs/stable/generated/torch.cat.html#torch.cat" title="(在 PyTorch v1.11.0)"><code class="xref py py-func docutils literal notranslate"><span class="pre">torch.cat()</span></code></a> 替换为 <a class="reference external" href="https://xinetzone.github.io/pytorch-book/api/pytorch/nn/generated/torch.nn.quantized.FloatFunctional.html#torch.nn.quantized.FloatFunctional" title="(在 Pytorch Book)"><code class="xref py py-class docutils literal notranslate"><span class="pre">FloatFunctional</span></code></a>.<code class="xref py py-func docutils literal notranslate"><span class="pre">cat()</span></code></p></li>
-<li><p>使用 <a class="reference external" href="https://xinetzone.github.io/pytorch-book/api/pytorch/ao/quantization/generated/torch.ao.quantization.fuse_modules.fuse_modules.html#torch.ao.quantization.fuse_modules.fuse_modules" title="(在 Pytorch Book)"><code class="xref py py-func docutils literal notranslate"><span class="pre">fuse_modules()</span></code></a>（用于静态 PTQ） 或者 <a class="reference external" href="https://xinetzone.github.io/pytorch-book/api/pytorch/ao/quantization/generated/torch.ao.quantization.fuse_modules.fuse_modules_qat.html#torch.ao.quantization.fuse_modules.fuse_modules_qat" title="(在 Pytorch Book)"><code class="xref py py-func docutils literal notranslate"><span class="pre">fuse_modules_qat()</span></code></a> （用于 QAT）融合如下模块序列：</p>
+<li><p><strong>算子替换</strong>：替换 <code class="docutils literal notranslate"><span class="pre">float_model</span></code> 的部分算子，比如 <a class="reference external" href="https://pytorch.org/docs/stable/generated/torch.add.html#torch.add" title="(在 PyTorch v1.11.0)"><code class="xref py py-func docutils literal notranslate"><span class="pre">torch.add()</span></code></a> 替换为 <a class="reference external" href="https://xinetzone.github.io/pytorch-book/api/pytorch/nn/generated/torch.nn.quantized.FloatFunctional.html#torch.nn.quantized.FloatFunctional" title="(在 Pytorch Book)"><code class="xref py py-class docutils literal notranslate"><span class="pre">FloatFunctional</span></code></a>.<code class="xref py py-func docutils literal notranslate"><span class="pre">add()</span></code>，<a class="reference external" href="https://pytorch.org/docs/stable/generated/torch.cat.html#torch.cat" title="(在 PyTorch v1.11.0)"><code class="xref py py-func docutils literal notranslate"><span class="pre">torch.cat()</span></code></a> 替换为 <a class="reference external" href="https://xinetzone.github.io/pytorch-book/api/pytorch/nn/generated/torch.nn.quantized.FloatFunctional.html#torch.nn.quantized.FloatFunctional" title="(在 Pytorch Book)"><code class="xref py py-class docutils literal notranslate"><span class="pre">FloatFunctional</span></code></a>.<code class="xref py py-func docutils literal notranslate"><span class="pre">cat()</span></code></p></li>
+<li><p><strong>算子融合</strong>：使用 <a class="reference external" href="https://xinetzone.github.io/pytorch-book/api/pytorch/ao/quantization/generated/torch.ao.quantization.fuse_modules.fuse_modules.html#torch.ao.quantization.fuse_modules.fuse_modules" title="(在 Pytorch Book)"><code class="xref py py-func docutils literal notranslate"><span class="pre">fuse_modules()</span></code></a>（用于静态 PTQ） 或者 <a class="reference external" href="https://xinetzone.github.io/pytorch-book/api/pytorch/ao/quantization/generated/torch.ao.quantization.fuse_modules.fuse_modules_qat.html#torch.ao.quantization.fuse_modules.fuse_modules_qat" title="(在 Pytorch Book)"><code class="xref py py-func docutils literal notranslate"><span class="pre">fuse_modules_qat()</span></code></a> （用于 QAT）融合如下模块序列：</p>
 <ul class="simple">
 <li><p>conv, bn</p></li>
 <li><p>conv, bn, relu</p></li>
@@ -357,9 +423,178 @@ title="Print to PDF"
 </ol>
 <section id="id1">
 <h2>模块融合<a class="headerlink" href="#id1" title="永久链接至标题">#</a></h2>
+<p>可量化模型与浮点模型的算子总会存在一些差异，为了提供更加通用的接口，需要做如下工作。</p>
 <section id="id2">
 <h3>算子替换<a class="headerlink" href="#id2" title="永久链接至标题">#</a></h3>
+<p><a class="reference external" href="https://xinetzone.github.io/pytorch-book/api/pytorch/nn/generated/torch.nn.quantized.FloatFunctional.html#torch.nn.quantized.FloatFunctional" title="(在 Pytorch Book)"><code class="xref py py-class docutils literal notranslate"><span class="pre">FloatFunctional</span></code></a> 算子比普通的 <code class="docutils literal notranslate"><span class="pre">torch.</span></code> 的运算多了后处理操作，比如：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">torch</span>
+<span class="kn">from</span> <span class="nn">torch</span> <span class="kn">import</span> <span class="n">Tensor</span>
+
+<span class="k">class</span> <span class="nc">FloatFunctional</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">activation_post_process</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Identity</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s2">&quot;FloatFunctional 不打算使用 `forward`。请使用下面的操作&quot;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">add</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;等价于 ``torch.add(Tensor, Tensor)`` 运算&quot;&quot;&quot;</span>
+        <span class="n">r</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+        <span class="n">r</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">activation_post_process</span><span class="p">(</span><span class="n">r</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">r</span>
+    <span class="o">...</span>
+</pre></div>
+</div>
+<p>由于 <code class="docutils literal notranslate"><span class="pre">self.activation_post_process</span> <span class="pre">=</span> <span class="pre">torch.nn.Identity()</span></code> 是自映射，所以 <code class="xref py py-meth docutils literal notranslate"><span class="pre">add()</span></code> 等价于 <a class="reference external" href="https://pytorch.org/docs/stable/generated/torch.add.html#torch.add" title="(在 PyTorch v1.11.0)"><code class="xref py py-func docutils literal notranslate"><span class="pre">torch.add()</span></code></a>。</p>
+<div class="admonition tip">
+<p class="admonition-title">小技巧</p>
+<p>猜测 <a class="reference external" href="https://xinetzone.github.io/pytorch-book/api/pytorch/nn/generated/torch.nn.quantized.FloatFunctional.html#torch.nn.quantized.FloatFunctional" title="(在 Pytorch Book)"><code class="xref py py-class docutils literal notranslate"><span class="pre">FloatFunctional</span></code></a> 算子提供了自定义算子的官方接口。即只需要对 <code class="docutils literal notranslate"><span class="pre">self.activation_post_process</span></code> 赋值即可添加算子的后处理工作。</p>
+</div>
 </section>
+<section id="id3">
+<h3>算子融合<a class="headerlink" href="#id3" title="永久链接至标题">#</a></h3>
+<p><a class="reference external" href="https://xinetzone.github.io/pytorch-book/api/pytorch/torchvision/generated/torchvision.models.quantization.utils._fuse_modules.html#torchvision.models.quantization.utils._fuse_modules" title="(在 Pytorch Book)"><code class="xref py py-func docutils literal notranslate"><span class="pre">_fuse_modules()</span></code></a> 提供了 <a class="reference external" href="https://xinetzone.github.io/pytorch-book/api/pytorch/ao/quantization/generated/torch.ao.quantization.fuse_modules.fuse_modules.html#torch.ao.quantization.fuse_modules.fuse_modules" title="(在 Pytorch Book)"><code class="xref py py-func docutils literal notranslate"><span class="pre">fuse_modules()</span></code></a>（用于 PTQ 静态量化） 和 <a class="reference external" href="https://xinetzone.github.io/pytorch-book/api/pytorch/ao/quantization/generated/torch.ao.quantization.fuse_modules.fuse_modules_qat.html#torch.ao.quantization.fuse_modules.fuse_modules_qat" title="(在 Pytorch Book)"><code class="xref py py-func docutils literal notranslate"><span class="pre">fuse_modules_qat()</span></code></a> （用于 QAT）的统一接口。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">torch.ao.quantization</span> <span class="kn">import</span> <span class="n">fuse_modules_qat</span><span class="p">,</span> <span class="n">fuse_modules</span>
+
+
+<span class="k">def</span> <span class="nf">_fuse_modules</span><span class="p">(</span>
+    <span class="n">model</span><span class="p">:</span> <span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">,</span> 
+    <span class="n">modules_to_fuse</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="nb">list</span><span class="p">[</span><span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]],</span> 
+    <span class="n">is_qat</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="kc">None</span><span class="p">,</span> 
+    <span class="o">**</span><span class="n">kwargs</span><span class="p">:</span> <span class="n">Any</span>
+<span class="p">):</span>
+    <span class="k">if</span> <span class="n">is_qat</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">is_qat</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">training</span>
+    <span class="n">method</span> <span class="o">=</span> <span class="n">fuse_modules_qat</span> <span class="k">if</span> <span class="n">is_qat</span> <span class="k">else</span>  <span class="n">fuse_modules</span>
+    <span class="k">return</span> <span class="n">method</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">modules_to_fuse</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>下面介绍几个例子。</p>
+</section>
+<section id="id4">
+<h3>示例<a class="headerlink" href="#id4" title="永久链接至标题">#</a></h3>
+<p>为了说明模块融合的细节，举例如下。</p>
+<section id="resnet">
+<h4>改造 ResNet<a class="headerlink" href="#resnet" title="永久链接至标题">#</a></h4>
+<div class="sphinx-bs container pb-4 docutils">
+<div class="row docutils">
+<div class="d-flex col-lg-12 px-2 py-2 docutils">
+<div class="card w-100 shadow docutils">
+<div class="card-header w3-pale-red w3-round-xxlarge w3-wide docutils">
+<p class="card-text">浮点模块</p>
+</div>
+<div class="card-body w3-text-blue docutils">
+<p class="card-text">ResNet 的 <code class="docutils literal notranslate"><span class="pre">BasicBlock</span></code> 中需要被改造的部分：</p>
+<ol class="simple">
+<li><p class="card-text"><code class="docutils literal notranslate"><span class="pre">24-26</span></code>、<code class="docutils literal notranslate"><span class="pre">28-29</span></code> 与 <code class="docutils literal notranslate"><span class="pre">32</span></code> 需要被 <a class="reference external" href="https://xinetzone.github.io/pytorch-book/api/pytorch/torchvision/generated/torchvision.models.quantization.utils._fuse_modules.html#torchvision.models.quantization.utils._fuse_modules" title="(在 Pytorch Book)"><code class="xref py py-func docutils literal notranslate"><span class="pre">_fuse_modules()</span></code></a> 函数融合；</p></li>
+<li><p class="card-text"><code class="docutils literal notranslate"><span class="pre">34-35</span></code> 被替换为 <a class="reference external" href="https://xinetzone.github.io/pytorch-book/api/pytorch/nn/generated/torch.nn.quantized.FloatFunctional.html#torch.nn.quantized.FloatFunctional" title="(在 Pytorch Book)"><code class="xref py py-class docutils literal notranslate"><span class="pre">FloatFunctional</span></code></a> 的 <code class="xref py py-func docutils literal notranslate"><span class="pre">add_relu()</span></code> 函数。</p></li>
+</ol>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kn">from</span> <span class="nn">torch</span> <span class="kn">import</span> <span class="n">nn</span>
+<span class="linenos"> 2</span>
+<span class="linenos"> 3</span>
+<span class="linenos"> 4</span><span class="k">class</span> <span class="nc">BasicBlock</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+<span class="linenos"> 5</span>    <span class="n">expansion</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="linenos"> 6</span>
+<span class="linenos"> 7</span>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
+<span class="linenos"> 8</span>        <span class="bp">self</span><span class="p">,</span>
+<span class="linenos"> 9</span>        <span class="n">inplanes</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+<span class="linenos">10</span>        <span class="n">planes</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+<span class="linenos">11</span>        <span class="n">stride</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>
+<span class="linenos">12</span>        <span class="n">downsample</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+<span class="linenos">13</span>        <span class="n">groups</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>
+<span class="linenos">14</span>        <span class="n">base_width</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">64</span><span class="p">,</span>
+<span class="linenos">15</span>        <span class="n">dilation</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>
+<span class="linenos">16</span>        <span class="n">norm_layer</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Callable</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+<span class="linenos">17</span>        <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="linenos">18</span>        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+<span class="linenos">19</span>        <span class="o">...</span> <span class="c1"># 此处省略</span>
+<span class="linenos">20</span>
+<span class="linenos">21</span>    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
+<span class="linenos">22</span>        <span class="n">identity</span> <span class="o">=</span> <span class="n">x</span>
+<span class="linenos">23</span>
+<span class="hll"><span class="linenos">24</span>        <span class="n">out</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">conv1</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</span><span class="hll"><span class="linenos">25</span>        <span class="n">out</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">bn1</span><span class="p">(</span><span class="n">out</span><span class="p">)</span>
+</span><span class="hll"><span class="linenos">26</span>        <span class="n">out</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">relu</span><span class="p">(</span><span class="n">out</span><span class="p">)</span>
+</span><span class="linenos">27</span>
+<span class="hll"><span class="linenos">28</span>        <span class="n">out</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">conv2</span><span class="p">(</span><span class="n">out</span><span class="p">)</span>
+</span><span class="hll"><span class="linenos">29</span>        <span class="n">out</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">bn2</span><span class="p">(</span><span class="n">out</span><span class="p">)</span>
+</span><span class="linenos">30</span>
+<span class="linenos">31</span>        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">downsample</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+<span class="hll"><span class="linenos">32</span>            <span class="n">identity</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">downsample</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</span><span class="linenos">33</span>
+<span class="hll"><span class="linenos">34</span>        <span class="n">out</span> <span class="o">+=</span> <span class="n">identity</span>
+</span><span class="hll"><span class="linenos">35</span>        <span class="n">out</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">relu</span><span class="p">(</span><span class="n">out</span><span class="p">)</span>
+</span><span class="linenos">36</span>        <span class="k">return</span> <span class="n">out</span>
+</pre></div>
+</div>
+</div>
+<div class="card-footer w3-pale-blue w3-round-large w3-opacity docutils">
+<p class="card-text"><code class="docutils literal notranslate"><span class="pre">torchvision.models.resnet</span></code> 中的 <code class="xref py py-class docutils literal notranslate"><span class="pre">BasicBlock</span></code></p>
+</div>
+</div>
+</div>
+<div class="d-flex col-lg-12 px-2 py-2 docutils">
+<div class="card w-100 shadow docutils">
+<div class="card-header w3-pale-red w3-round-xxlarge w3-wide docutils">
+<p class="card-text">可量化模块</p>
+</div>
+<div class="card-body w3-text-blue docutils">
+<ol class="simple">
+<li><p class="card-text"><code class="docutils literal notranslate"><span class="pre">7</span></code> 和 <code class="docutils literal notranslate"><span class="pre">22</span></code> 实现算子替换工作；</p></li>
+<li><p class="card-text"><code class="docutils literal notranslate"><span class="pre">12-14</span></code>、<code class="docutils literal notranslate"><span class="pre">16-17</span></code>、<code class="docutils literal notranslate"><span class="pre">20</span></code>、<code class="docutils literal notranslate"><span class="pre">26-27</span></code>、<code class="docutils literal notranslate"><span class="pre">29-30</span></code> 实现算子融合工作。</p></li>
+</ol>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kn">from</span> <span class="nn">torchvision.models.resnet</span> <span class="kn">import</span> <span class="n">BasicBlock</span>
+<span class="linenos"> 2</span>
+<span class="linenos"> 3</span>
+<span class="linenos"> 4</span><span class="k">class</span> <span class="nc">QuantizableBasicBlock</span><span class="p">(</span><span class="n">BasicBlock</span><span class="p">):</span>
+<span class="linenos"> 5</span>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">:</span> <span class="n">Any</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="linenos"> 6</span>        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<span class="hll"><span class="linenos"> 7</span>        <span class="bp">self</span><span class="o">.</span><span class="n">add_relu</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">quantized</span><span class="o">.</span><span class="n">FloatFunctional</span><span class="p">()</span>
+</span><span class="linenos"> 8</span>
+<span class="linenos"> 9</span>    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
+<span class="linenos">10</span>        <span class="n">identity</span> <span class="o">=</span> <span class="n">x</span>
+<span class="linenos">11</span>
+<span class="hll"><span class="linenos">12</span>        <span class="n">out</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">conv1</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</span><span class="hll"><span class="linenos">13</span>        <span class="n">out</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">bn1</span><span class="p">(</span><span class="n">out</span><span class="p">)</span>
+</span><span class="hll"><span class="linenos">14</span>        <span class="n">out</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">relu</span><span class="p">(</span><span class="n">out</span><span class="p">)</span>
+</span><span class="linenos">15</span>
+<span class="hll"><span class="linenos">16</span>        <span class="n">out</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">conv2</span><span class="p">(</span><span class="n">out</span><span class="p">)</span>
+</span><span class="hll"><span class="linenos">17</span>        <span class="n">out</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">bn2</span><span class="p">(</span><span class="n">out</span><span class="p">)</span>
+</span><span class="linenos">18</span>
+<span class="linenos">19</span>        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">downsample</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+<span class="hll"><span class="linenos">20</span>            <span class="n">identity</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">downsample</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</span><span class="linenos">21</span>
+<span class="hll"><span class="linenos">22</span>        <span class="n">out</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">add_relu</span><span class="o">.</span><span class="n">add_relu</span><span class="p">(</span><span class="n">out</span><span class="p">,</span> <span class="n">identity</span><span class="p">)</span>
+</span><span class="linenos">23</span>        <span class="k">return</span> <span class="n">out</span>
+<span class="linenos">24</span>
+<span class="linenos">25</span>    <span class="k">def</span> <span class="nf">fuse_model</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">is_qat</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">bool</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="hll"><span class="linenos">26</span>        <span class="n">_fuse_modules</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="p">[[</span><span class="s2">&quot;conv1&quot;</span><span class="p">,</span> <span class="s2">&quot;bn1&quot;</span><span class="p">,</span> <span class="s2">&quot;relu&quot;</span><span class="p">],</span>
+</span><span class="hll"><span class="linenos">27</span>                            <span class="p">[</span><span class="s2">&quot;conv2&quot;</span><span class="p">,</span> <span class="s2">&quot;bn2&quot;</span><span class="p">]],</span> <span class="n">is_qat</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</span><span class="linenos">28</span>        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">downsample</span><span class="p">:</span>
+<span class="hll"><span class="linenos">29</span>            <span class="n">_fuse_modules</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">downsample</span><span class="p">,</span>
+</span><span class="hll"><span class="linenos">30</span>                        <span class="p">[</span><span class="s2">&quot;0&quot;</span><span class="p">,</span> <span class="s2">&quot;1&quot;</span><span class="p">],</span> <span class="n">is_qat</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</span></pre></div>
+</div>
+</div>
+<div class="card-footer w3-pale-blue w3-round-large w3-opacity docutils">
+<p class="card-text"><code class="docutils literal notranslate"><span class="pre">torchvision.models.quantization.resnet</span></code> 中的 <code class="xref py py-class docutils literal notranslate"><span class="pre">QuantizableBasicBlock</span></code></p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+</section>
+</section>
+<section id="id5">
+<h2>量化配置<a class="headerlink" href="#id5" title="永久链接至标题">#</a></h2>
+</section>
+<section id="id6">
+<h2>量化训练<a class="headerlink" href="#id6" title="永久链接至标题">#</a></h2>
+</section>
+<section id="mobilenetv2">
+<h2>实战 MobileNetv2<a class="headerlink" href="#mobilenetv2" title="永久链接至标题">#</a></h2>
 </section>
 </section>
 
@@ -395,7 +630,7 @@ title="Print to PDF"
     By xinetzone<br/>
   
       &copy; Copyright 2022, xinetzone.<br/>
-    Last updated on 2022-03-26, 02:55:36.<br/>
+    Last updated on 2022-03-26, 06:01:41.<br/>
 </p>
         </footer>
     </div>
