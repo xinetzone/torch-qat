@@ -47,7 +47,7 @@
     <link rel="index" title="索引" href="genindex.html" />
     <link rel="search" title="搜索" href="search.html" />
     <link rel="next" title="融合" href="confuse.html" />
-    <link rel="prev" title="PyTorch 下的 QAT 教程" href="index.html" />
+    <link rel="prev" title="PyTorch 量化教程" href="index.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="zh_CN">
     
@@ -320,6 +320,16 @@ title="Print to PDF"
                 
   <section class="tex2jax_ignore mathjax_ignore" id="pytorch">
 <h1>最佳量化实践（PyTorch）<a class="headerlink" href="#pytorch" title="永久链接至标题">#</a></h1>
+<div class="admonition- admonition">
+<p class="admonition-title">模型量化动机</p>
+<ul class="simple">
+<li><p><strong>更少的存储开销和带宽需求</strong>。即使用更少的比特数存储数据，有效减少应用对存储资源的依赖，但现代系统往往拥有相对丰富的存储资源，这一点已经不算是采用量化的主要动机；</p></li>
+<li><p><strong>更快的计算速度</strong>。即对大多数处理器而言，整型运算的速度一般要比浮点运算更快一些（但不总是）；</p></li>
+<li><p><strong>更低的能耗与占用面积</strong>：FP32 乘法运算的能耗是 INT8 乘法运算能耗的 18.5 倍，芯片占用面积则是 INT8 的 27.3 倍，而对于芯片设计和 FPGA 设计而言，更少的资源占用意味着相同数量的单元下可以设计出更多的计算单元；而更少的能耗意味着更少的发热，和更长久的续航。</p></li>
+<li><p><strong>尚可接受的精度损失</strong>。即量化相当于对模型权重引入噪声，所幸 CNN 本身对噪声不敏感（在模型训练过程中，模拟量化所引入的权重加噪还有利于防止过拟合），在合适的比特数下量化后的模型并不会带来很严重的精度损失。按照 <a class="reference external" href="https://cv.gluon.ai/build/examples_deployment/int8_inference.html">GluonCV</a> 提供的报告，经过 INT8 量化之后，ResNet50_v1 和 MobileNet1.0_v1 在 ILSVRC2012 数据集上的准确率仅分别从 77.36%、73.28% 下降为 76.86%、72.85%。</p></li>
+<li><p><strong>支持 INT8 是一个大的趋势</strong>。即无论是移动端还是服务器端，都可以看到新的计算设备正不断迎合量化技术。比如 NPU/APU/AIPU 等基本都是支持 INT8（甚至更低精度的 INT4）计算的，并且有相当可观的 TOPs，而 Mali GPU 开始引入 INT8 dot 支持，Nvidia 也不例外。除此之外，当前很多创业公司新发布的边缘端芯片几乎都支持 INT8 类型。</p></li>
+</ul>
+</div>
 <p>量化（包括 PTQ （静态）和 QAT）的整个流程如下：</p>
 <p class="rubric">模块融合阶段</p>
 <p>将已有模型 <code class="docutils literal notranslate"><span class="pre">float_model</span></code> 改造为可量化模型 <code class="docutils literal notranslate"><span class="pre">quantizable_model</span></code>，需要做如下工作：</p>
@@ -365,7 +375,7 @@ title="Print to PDF"
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">上一页</p>
-            <p class="prev-next-title">PyTorch 下的 QAT 教程</p>
+            <p class="prev-next-title">PyTorch 量化教程</p>
         </div>
     </a>
     <a class='right-next' id="next-link" href="confuse.html" title="下一页 页">
@@ -385,7 +395,7 @@ title="Print to PDF"
     By xinetzone<br/>
   
       &copy; Copyright 2022, xinetzone.<br/>
-    Last updated on 2022-03-26, 02:31:16.<br/>
+    Last updated on 2022-03-26, 02:55:36.<br/>
 </p>
         </footer>
     </div>
