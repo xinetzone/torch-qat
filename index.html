@@ -48,7 +48,7 @@
     <link rel="shortcut icon" href="_static/favicon.jpg"/>
     <link rel="index" title="索引" href="genindex.html" />
     <link rel="search" title="搜索" href="search.html" />
-    <link rel="next" title="最佳量化实践（PyTorch）" href="best-practice.html" />
+    <link rel="next" title="概述" href="intro.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="zh_CN">
     
@@ -102,8 +102,13 @@
     <div class="bd-toc-item active">
         <ul class="nav bd-sidenav">
  <li class="toctree-l1">
+  <a class="reference internal" href="intro.html">
+   概述
+  </a>
+ </li>
+ <li class="toctree-l1">
   <a class="reference internal" href="best-practice.html">
-   最佳量化实践（PyTorch）
+   PTQ 与 QAT 量化实践（PyTorch）
   </a>
  </li>
  <li class="toctree-l1">
@@ -326,7 +331,31 @@ title="Print to PDF"
 </div>
 <div class="toctree-wrapper compound">
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="best-practice.html">最佳量化实践（PyTorch）</a><ul>
+<li class="toctree-l1"><a class="reference internal" href="intro.html">概述</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="intro.html#api">量化 API 概述</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="intro.html#eager">Eager 模式量化</a></li>
+<li class="toctree-l3"><a class="reference internal" href="intro.html#fx">（原型）FX 图模式量化</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="intro.html#id5">量化 API 参考</a></li>
+<li class="toctree-l2"><a class="reference internal" href="intro.html#id6">量化张量</a></li>
+<li class="toctree-l2"><a class="reference internal" href="intro.html#id7">原生支持的后端</a></li>
+<li class="toctree-l2"><a class="reference internal" href="intro.html#id8">量化定制</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="intro.html#id9">量化自定义模块 API</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="intro.html#id10">量化模型准备（Eager 模式）</a></li>
+<li class="toctree-l2"><a class="reference internal" href="intro.html#id11">最佳实践（已废弃）</a></li>
+<li class="toctree-l2"><a class="reference internal" href="intro.html#id12">数值调试（原型）</a></li>
+<li class="toctree-l2"><a class="reference internal" href="intro.html#id13">常见错误</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="intro.html#id14">保存和加载量化模型</a></li>
+<li class="toctree-l3"><a class="reference internal" href="intro.html#id15">传递非量化的张量到量化的核</a></li>
+<li class="toctree-l3"><a class="reference internal" href="intro.html#id16">传递量化的张量到非量化的核</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="best-practice.html">PTQ 与 QAT 量化实践（PyTorch）</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="best-practice.html#id1">模块融合</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="best-practice.html#id2">算子替换</a></li>
 <li class="toctree-l3"><a class="reference internal" href="best-practice.html#id3">算子融合</a></li>
@@ -362,10 +391,10 @@ title="Print to PDF"
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='right-next' id="next-link" href="best-practice.html" title="下一页 页">
+    <a class='right-next' id="next-link" href="intro.html" title="下一页 页">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">下一页</p>
-        <p class="prev-next-title">最佳量化实践（PyTorch）</p>
+        <p class="prev-next-title">概述</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>
@@ -379,7 +408,7 @@ title="Print to PDF"
     By xinetzone<br/>
   
       &copy; Copyright 2022, xinetzone.<br/>
-    Last updated on 2022-03-26, 06:01:41.<br/>
+    Last updated on 2022-03-26, 10:27:19.<br/>
 </p>
         </footer>
     </div>

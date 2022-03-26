@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>最佳量化实践（PyTorch） &#8212; torch_qat 0.0.1rc1 文档</title>
+    <title>PTQ 与 QAT 量化实践（PyTorch） &#8212; torch_qat 0.0.1rc1 文档</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -49,7 +49,7 @@
     <link rel="index" title="索引" href="genindex.html" />
     <link rel="search" title="搜索" href="search.html" />
     <link rel="next" title="融合" href="confuse.html" />
-    <link rel="prev" title="PyTorch 量化教程" href="index.html" />
+    <link rel="prev" title="概述" href="intro.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="zh_CN">
     
@@ -102,9 +102,14 @@
 </form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item active">
         <ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="intro.html">
+   概述
+  </a>
+ </li>
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
-   最佳量化实践（PyTorch）
+   PTQ 与 QAT 量化实践（PyTorch）
   </a>
  </li>
  <li class="toctree-l1">
@@ -320,7 +325,7 @@ title="Print to PDF"
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>最佳量化实践（PyTorch）</h1>
+                <h1>PTQ 与 QAT 量化实践（PyTorch）</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -384,10 +389,14 @@ title="Print to PDF"
                 
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="pytorch">
-<h1>最佳量化实践（PyTorch）<a class="headerlink" href="#pytorch" title="永久链接至标题">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="ptq-qat-pytorch">
+<h1>PTQ 与 QAT 量化实践（PyTorch）<a class="headerlink" href="#ptq-qat-pytorch" title="永久链接至标题">#</a></h1>
+<ul class="simple">
+<li><p><span class="guilabel">目标</span>：PyTorch 浮点模型快速转换为 PTQ（静态）和 QAT。</p></li>
+<li><p><span class="guilabel">读者</span>：会使用 PyTorch 实现卷积神经网络模型开发的算法工程师。</p></li>
+</ul>
 <div class="admonition- admonition">
-<p class="admonition-title">模型量化动机</p>
+<p class="admonition-title">模型量化的动机</p>
 <ul class="simple">
 <li><p><strong>更少的存储开销和带宽需求</strong>。即使用更少的比特数存储数据，有效减少应用对存储资源的依赖，但现代系统往往拥有相对丰富的存储资源，这一点已经不算是采用量化的主要动机；</p></li>
 <li><p><strong>更快的计算速度</strong>。即对大多数处理器而言，整型运算的速度一般要比浮点运算更快一些（但不总是）；</p></li>
@@ -477,9 +486,9 @@ title="Print to PDF"
 <p>为了说明模块融合的细节，举例如下。</p>
 <section id="resnet">
 <h4>改造 ResNet<a class="headerlink" href="#resnet" title="永久链接至标题">#</a></h4>
-<div class="sphinx-bs container pb-4 docutils">
+<div class="sphinx-bs container pb-4 full-width container-fluid docutils">
 <div class="row docutils">
-<div class="d-flex col-lg-12 px-2 py-2 docutils">
+<div class="d-flex col-lg-6 px-2 py-2 docutils">
 <div class="card w-100 shadow docutils">
 <div class="card-header w3-pale-red w3-round-xxlarge w3-wide docutils">
 <p class="card-text">浮点模块</p>
@@ -534,12 +543,13 @@ title="Print to PDF"
 </div>
 </div>
 </div>
-<div class="d-flex col-lg-12 px-2 py-2 docutils">
+<div class="d-flex col-lg-6 px-2 py-2 docutils">
 <div class="card w-100 shadow docutils">
 <div class="card-header w3-pale-red w3-round-xxlarge w3-wide docutils">
 <p class="card-text">可量化模块</p>
 </div>
 <div class="card-body w3-text-blue docutils">
+<p class="card-text">改造的部分：</p>
 <ol class="simple">
 <li><p class="card-text"><code class="docutils literal notranslate"><span class="pre">7</span></code> 和 <code class="docutils literal notranslate"><span class="pre">22</span></code> 实现算子替换工作；</p></li>
 <li><p class="card-text"><code class="docutils literal notranslate"><span class="pre">12-14</span></code>、<code class="docutils literal notranslate"><span class="pre">16-17</span></code>、<code class="docutils literal notranslate"><span class="pre">20</span></code>、<code class="docutils literal notranslate"><span class="pre">26-27</span></code>、<code class="docutils literal notranslate"><span class="pre">29-30</span></code> 实现算子融合工作。</p></li>
@@ -584,6 +594,7 @@ title="Print to PDF"
 </div>
 </div>
 </div>
+<p><img alt="" src="_images/resnet.png" /></p>
 </section>
 </section>
 </section>
@@ -606,11 +617,11 @@ title="Print to PDF"
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="index.html" title="上一页 页">
+    <a class='left-prev' id="prev-link" href="intro.html" title="上一页 页">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">上一页</p>
-            <p class="prev-next-title">PyTorch 量化教程</p>
+            <p class="prev-next-title">概述</p>
         </div>
     </a>
     <a class='right-next' id="next-link" href="confuse.html" title="下一页 页">
@@ -630,7 +641,7 @@ title="Print to PDF"
     By xinetzone<br/>
   
       &copy; Copyright 2022, xinetzone.<br/>
-    Last updated on 2022-03-26, 06:01:41.<br/>
+    Last updated on 2022-03-26, 10:27:19.<br/>
 </p>
         </footer>
     </div>
