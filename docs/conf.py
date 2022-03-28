@@ -1,11 +1,23 @@
+# 加载自定义库
+import sys
+from pathlib import Path
+from importlib import import_module
+
+DOC_ROOT = Path(__file__).absolute().parents[0]
+MOD_PATH = str(DOC_ROOT.parent/'src')
+if MOD_PATH not in sys.path:
+    sys.path.extend([MOD_PATH])
+
+torchq = import_module('torchq')
+
 # -- Project information -----------------------------------------------------
 
-project = 'torch_qat'
+project = 'torchq'
 copyright = '2022, xinetzone'
 author = 'xinetzone'
 
 # The full version, including alpha/beta/rc tags
-release = '0.0.1rc1'
+release = torchq.__version__
 
 
 # -- General configuration ---------------------------------------------------
@@ -38,8 +50,21 @@ language = 'zh_CN'
 # List of patterns, relative to source directory, that match files and
 # directories to ignore when looking for source files.
 # This pattern also affects html_static_path and html_extra_path.
-exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store']
+exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store', '**/include']
 
+myst_enable_extensions = [
+    "colon_fence",
+    "amsmath",
+    "deflist",
+    "dollarmath",
+    "html_admonition",
+    "html_image",
+    "replacements",
+    "smartquotes",
+    "substitution",
+    "tasklist",
+    # "linkify",
+]
 
 # -- Options for HTML output -------------------------------------------------
 
@@ -83,12 +108,13 @@ def setup(app):
                         objname='configuration value',
                         indextemplate='pair: %s; configuration value')
 
+
 # MyST-NB 设置
 # 如果你希望stderr和stdout中的每个输出都被合并成一个流，请使用以下配置。
 # 避免将 jupter 执行报错的信息输出到 cmd
 nb_merge_streams = True
 execution_allow_errors = True
-jupyter_execute_notebooks = "cache"
+jupyter_execute_notebooks = "off"
 
 nb_render_priority = {
     "html": (

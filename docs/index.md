@@ -5,13 +5,12 @@
 :maxdepth: 3
 
 intro
-best-practice
-confuse
-config
-train
+tutorial/index
+dev/index
+test/index
 ```
 
-## 目录和索引
+# 目录和索引
 
 * {ref}`genindex`
 * {ref}`modindex`

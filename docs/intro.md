@@ -21,7 +21,7 @@ PyTorch 提供了两种不同的量化模式：Eager 模式量化和 FX 图模�
 Eager 模式量化是 beta 特性。用户需要进行融合，并手动指定量化和反量化发生的位置，而且它只支持模块而不支持函数。FX 图模式量化是 PyTorch 中新的自动量化框架，目前它是原型（prototype）特性。它通过添加对函数的支持和量化过程的自动化，对 Eager 模式量化进行了改进，尽管人们可能需要重构模型，以使模型与 FX Graph 模式量化兼容（通过 {mod}`torch.fx` 符号可追溯（symbolically traceable））。
 
 ```{note}
-FX 图模式量化预计不会在任意可能不是 symbolically traceable 的模型工作，我们会将其集成到域库 torchvision 和用户将能够量化模型类似于支持域的库与 FX 图模式量化。对于任意的模型，我们将提供一般的指导方针，但要让它实际工作，用户可能需要熟悉 {mod}`torch.fx`，特别是如何使模型具有符号可追溯性。
+FX 图模式量化预计不会在任意可能不是 symbolically traceable 的模型工作，将其集成到域库 torchvision 和用户将能够量化模型类似于支持域的库与 FX 图模式量化。对于任意的模型，提供一般的指导方针，但要让它实际工作，用户可能需要熟悉 {mod}`torch.fx`，特别是如何使模型具有符号可追溯性。
 
 新用户的量化鼓励尝试 FX 图模式量化首先，如果它不工作，用户可以尝试遵循[使用 FX 图模式量化](https://pytorch.org/tutorials/prototype/fx_graph_mode_quant_guide.html)的指导方针或回落到 Eager 模式量化。
 ```
@@ -33,6 +33,8 @@ FX 图模式量化预计不会在任意可能不是 symbolically traceable 的�
 3. 静态量化感知训练（static quantization aware training）：权重量化，激活量化，训练过程中的量化数值建模。
 
 ### Eager 模式量化
+
+分为动态量化、PTQ、QAT。
 
 #### 动态量化
 
@@ -86,175 +88,6 @@ res = model_int8(input_fp32)
 ```
 
 要了解更多关于动态量化的信息，请参阅[动态量化教程](https://pytorch.org/tutorials/recipes/recipes/dynamic_quantization.html)。
-
-#### 静态量化
-
-静态量化（static quantization）对模型的权重和激活进行量化。它在可能的情况下将激活融合到前面的层中。它需要用具有代表性的数据集进行校准，以确定激活的最佳量化参数。当内存带宽和计算空间都很重要时，通常会使用训练后量化，而 CNN 就是其典型的用例。静态量化也被称为训练后量化（Post Training Quantization）或 PTQ。
-
-```{rubric} 示意图
-```
-
-```
-# 原始模型
-# 全部的张量和计算均在浮点上进行
-previous_layer_fp32 -- linear_fp32 -- activation_fp32 -- next_layer_fp32
-                    /
-    linear_weight_fp32
-
-# 静态量化模型
-# weights 和 activations 在 int8 上
-previous_layer_int8 -- linear_with_activation_int8 -- next_layer_int8
-                    /
-  linear_weight_int8
-```
-
-```{rubric} 示例
-```
-
-```python
-import torch
-
-# 定义浮点模型，其中一些层可以被静态量化
-class M(torch.nn.Module):
-    def __init__(self):
-        super().__init__()
-        # QuantStub 将张量从浮点转换为量化
-        self.quant = torch.quantization.QuantStub()
-        self.conv = torch.nn.Conv2d(1, 1, 1)
-        self.relu = torch.nn.ReLU()
-        # DeQuantStub 将张量从量化转换为浮点
-        self.dequant = torch.quantization.DeQuantStub()
-
-    def forward(self, x):
-        # 手动指定张量将在量化模型中从浮点转换为量化的位置
-        x = self.quant(x)
-        x = self.conv(x)
-        x = self.relu(x)
-        # 在量化模型中手动指定张量从量化到浮点的转换位置
-        x = self.dequant(x)
-        return x
-
-# 创建模型实例
-model_fp32 = M()
-
-# 要使静态量化逻辑工作，必须将模型设置为 eval 模式
-model_fp32.eval()
-
-# 附加全局 qconfig，其中包含关于要附加哪种观测器的信息。
-# 使用 'fbgemm' 进行端推理，使用 'qnnpack' 进行移动端推理。
-# 其他量化配置，如选择对称或非对称量化和 MinMax 或 L2Norm 校准技术，可以在这里指定。
-model_fp32.qconfig = torch.quantization.get_default_qconfig('fbgemm')
-
-# 融合 activation 到前面的层，在适用的地方。
-# 这需要根据模型架构手动完成。
-# 常见的融合包括 `conv + relu` 和 `conv + batchnorm + relu`
-model_fp32_fused = torch.quantization.fuse_modules(model_fp32, [['conv', 'relu']])
-
-# 准备静态量化模型。
-# 这将在模型中插入观测器，用于在校准期间观测激活（activation）张量。
-model_fp32_prepared = torch.quantization.prepare(model_fp32_fused)
-
-# 校准准备的模型，以确定量化参数的激活在现实世界的设置，校准具有代表性的数据集
-input_fp32 = torch.randn(4, 1, 4, 4)
-model_fp32_prepared(input_fp32)
-
-# 将观测到的模型转换为量化模型。
-# 这做了几件事：
-# 量化权重，计算和存储每个激活张量要使用的尺度（scale）和偏差（bias）值，并用量化实现替换关键算子。
-model_int8 = torch.quantization.convert(model_fp32_prepared)
-
-# 运行模型，相关的计算将在 int8 中发生
-res = model_int8(input_fp32)
-```
-
-要了解更多关于静态量化的信息，请参阅[静态量化教程](https://pytorch.org/tutorials/advanced/static_quantization_tutorial.html)。
-
-#### 量化感知训练
-
-与其他量化方法相比，量化感知训练（Quantization Aware Training）在训练过程中模拟量化的效果，允许更高的 accuracy。在训练过程中，所有的计算都是在浮点上进行的，使用 `fake_quant` 模块通过夹紧和舍入的方式对量化效果进行建模，模拟 INT8 的效果。模型转换后，权值和激活被量化，激活在可能的情况下被融合到前一层。它通常与 CNN 一起使用，与静态量化相比具有更高的 accuracy。量化感知训练也被称为 QAT。
-
-```{rubric} 示意图
-```
-
-```
-# 原始模型
-# 全部张量和计算均在浮点上
-previous_layer_fp32 -- linear_fp32 -- activation_fp32 -- next_layer_fp32
-                      /
-    linear_weight_fp32
-
-# 在训练过程中使用 fake_quants 建模量化数值
-previous_layer_fp32 -- fq -- linear_fp32 -- activation_fp32 -- fq -- next_layer_fp32
-                           /
-   linear_weight_fp32 -- fq
-
-# 量化模型
-# weights 和 activations 在 int8 上
-previous_layer_int8 -- linear_with_activation_int8 -- next_layer_int8
-                     /
-   linear_weight_int8
-```
-
-```{rubric} 示例
-```
-
-```python
-import torch
-
-# 定义浮点模型，其中一些层可以受益于 QAT
-class M(torch.nn.Module):
-    def __init__(self):
-        super().__init__()
-        # QuantStub 将张量从浮点转换为量化
-        self.quant = torch.quantization.QuantStub()
-        self.conv = torch.nn.Conv2d(1, 1, 1)
-        self.bn = torch.nn.BatchNorm2d(1)
-        self.relu = torch.nn.ReLU()
-        # DeQuantStub 将张量从量化转换为浮点
-        self.dequant = torch.quantization.DeQuantStub()
-
-    def forward(self, x):
-        x = self.quant(x)
-        x = self.conv(x)
-        x = self.bn(x)
-        x = self.relu(x)
-        x = self.dequant(x)
-        return x
-
-
-# 创建模型实例
-model_fp32 = M()
-
-# 模型必须设置为训练模式，以便 QAT 逻辑工作
-model_fp32.train()
-
-# 附加全局 qconfig，其中包含关于要附加哪种观测器的信息。
-# 使用 'fbgemm' 进行服务器端推理，使用 'qnnpack' 进行移动端推理。
-# 其他量化配置，如选择对称或非对称量化和 MinMax 或 L2Norm 校准技术，可以在这里指定。
-model_fp32.qconfig = torch.quantization.get_default_qat_qconfig('fbgemm')
-
-# 将激活融合到前面的层，在适用的情况下，这需要根据模型体系结构手工完成
-model_fp32_fused = torch.quantization.fuse_modules(model_fp32,
-                                                   [['conv', 'bn', 'relu']])
-
-# 为 QAT 准备模型。
-# 这将在模型中插入观测者和 fake_quants，它们将在校准期间观测权值和激活张量。
-model_fp32_prepared = torch.quantization.prepare_qat(model_fp32_fused)
-
-# 运行训练循环（没有显示）
-training_loop(model_fp32_prepared)
-
-# 将观测到的模型转换为量化模型。这有几件事：
-# 量化权重，计算和存储用于每个激活张量的尺度（scale）和偏差（bias）值，
-# 在适当的地方融合模块，并用量化实现替换关键算子。
-model_fp32_prepared.eval()
-model_int8 = torch.quantization.convert(model_fp32_prepared)
-
-# 运行模型，相关的计算将在 int8 中发生
-res = model_int8(input_fp32)
-```
-
-要了解更多关于量化意识训练的信息，请参阅 [QAT 教程](https://pytorch.org/tutorials/advanced/static_quantization_tutorial.html)。
 
 ### （原型）FX 图模式量化
 
@@ -532,18 +365,7 @@ mq = torch.quantization.quantize_fx.convert_fx(
     mp, convert_custom_config_dict=convert_custom_config_dict)
 ```
 
-## 量化模型准备（Eager 模式）
 
-目前有必要在 Eager 模式量化之前对模型定义进行一些修改。这是因为目前的量化工作是基于一个模块一个模块的。特别地，对于所有量化技术，用户需要：
-
-1. 将任何需要输出再量化请求的运算（因此有额外的参数）从函数形式转换为模块形式（例如，使用 {class}`torch.nn.ReLU` 而不是 {func}`torch.nn.functional.relu`）。
-1. 通过在子模块上指定 `.qconfig` 属性或指定 `qconfig_dict` 来指定模型的哪些部分需要量化。例如，设置 `model.conv1.qconfig = None` 表示 `model.conv1` 层不量化，设置 `model.linear1.qconfig = custom_qconfig` 表示 `model.linear1` 将使用 `custom_qconfig` 而不是全局 `qconfig`。
-
-对于量化激活的静态量化技术，用户还需要做以下工作：
-
-1. 指定量化和反量化激活的位置。这是使用 {class}`~torch.ao.quantization.stubs.QuantStub` 和 {class}`~torch.ao.quantization.stubs.DeQuantStub` 模块完成的。
-1. 使用 {class}`~torch.nn.quantized.FloatFunctional` 将需要对量化进行特殊处理的张量运算封装到模块中。例如像 {func}`add` 和 {func}`cat` 这样需要特殊处理来确定输出量化参数的运算。
-1. 融合模块：将运算/模块组合成单个模块，获得更高的 accuracy 和性能。这是使用 {func}`torch.ao.quantization.fuse_modules` API 完成的，该 API 接受要融合的模块列表。目前支持以下融合：`[Conv, Relu]`、 `[Conv, BatchNorm]`、 `[Conv, BatchNorm, Relu]` 和 `[Linear, Relu]`。
 
 ## 最佳实践（已废弃）
 
