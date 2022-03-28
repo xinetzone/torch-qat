@@ -6,50 +6,50 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>融合 &#8212; torch_qat 0.0.1rc1 文档</title>
+    <title>教程 &#8212; torchq 0.0.1-alpha 文档</title>
     
   <!-- Loaded before other Sphinx assets -->
-  <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
-<link href="_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
 
     
   <link rel="stylesheet"
-    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
   <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
   <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
 
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=4fea3ae4a0a4ba949df0a89bbae557cc2ce861ae" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
-    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="_static/default.css" />
-    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
-    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=1cee231a2b06fec83dfdf5e1f90e99acd3529254" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/default.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
     
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
 
-    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-    <script src="_static/jquery.js"></script>
-    <script src="_static/underscore.js"></script>
-    <script src="_static/doctools.js"></script>
-    <script src="_static/clipboard.min.js"></script>
-    <script src="_static/copybutton.js"></script>
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="_static/togglebutton.js"></script>
-    <script src="_static/scripts/sphinx-book-theme.js?digest=f31d14ad54b65d19161ba51d4ffff3a77ae00456"></script>
-    <script src="_static/translations.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=f31d14ad54b65d19161ba51d4ffff3a77ae00456"></script>
+    <script src="../_static/translations.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <link rel="shortcut icon" href="_static/favicon.jpg"/>
-    <link rel="index" title="索引" href="genindex.html" />
-    <link rel="search" title="搜索" href="search.html" />
-    <link rel="next" title="配置" href="config.html" />
-    <link rel="prev" title="PTQ 与 QAT 量化实践（PyTorch）" href="best-practice.html" />
+    <link rel="shortcut icon" href="../_static/favicon.jpg"/>
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="搜索" href="../search.html" />
+    <link rel="next" title="1. PTQ 与 QAT 实践" href="pqt-qat.html" />
+    <link rel="prev" title="概述" href="../intro.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="zh_CN">
     
@@ -84,48 +84,82 @@
 <div class="bd-sidebar noprint" id="site-navigation">
     <div class="bd-sidebar__content">
         <div class="bd-sidebar__top"><div class="navbar-brand-box">
-    <a class="navbar-brand text-wrap" href="index.html">
+    <a class="navbar-brand text-wrap" href="../index.html">
       
         <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
         
       
       
-      <img src="_static/logo.jpg" class="logo" alt="logo">
+      <img src="../_static/logo.jpg" class="logo" alt="logo">
       
       
-      <h1 class="site-logo" id="site-title">torch_qat 0.0.1rc1 文档</h1>
+      <h1 class="site-logo" id="site-title">torchq 0.0.1-alpha 文档</h1>
       
     </a>
-</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
   <i class="icon fas fa-search"></i>
   <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
 </form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item active">
         <ul class="current nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="intro.html">
+  <a class="reference internal" href="../intro.html">
    概述
   </a>
  </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="best-practice.html">
-   PTQ 与 QAT 量化实践（PyTorch）
-  </a>
- </li>
- <li class="toctree-l1 current active">
+ <li class="toctree-l1 current active has-children">
   <a class="current reference internal" href="#">
-   融合
+   教程
   </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="pqt-qat.html">
+     1. PTQ 与 QAT 实践
+    </a>
+   </li>
+  </ul>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="config.html">
-   配置
+  <a class="reference internal" href="../dev/index.html">
+   开发者指南
   </a>
  </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="train.html">
-   训练
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../test/index.html">
+   测试
   </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../test/best-practice.html">
+     PTQ 与 QAT 量化实践（PyTorch）
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../test/confuse.html">
+     融合
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../test/config.html">
+     配置
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../test/train.html">
+     训练
+    </a>
+   </li>
+  </ul>
  </li>
 </ul>
 
@@ -191,7 +225,7 @@ title="Fullscreen mode"
   </span>
 
 </button>
-<a href="https://github.com/xinetzone/torch-quantization/edit/main/docs/confuse.md"
+<a href="https://github.com/xinetzone/torch-quantization/edit/main/docs/tutorial/index.md"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="bottom"
@@ -213,7 +247,7 @@ title="Edit this page"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="_sources/confuse.md.txt"
+        <a href="../_sources/tutorial/index.md.txt"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -262,7 +296,7 @@ title="Print to PDF"
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>融合</h1>
+                <h1>教程</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -275,7 +309,29 @@ title="Print to PDF"
               <div>
                 
   <section class="tex2jax_ignore mathjax_ignore" id="id1">
-<h1>融合<a class="headerlink" href="#id1" title="永久链接至标题">#</a></h1>
+<h1>教程<a class="headerlink" href="#id1" title="永久链接至标题">#</a></h1>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="pqt-qat.html">1. PTQ 与 QAT 实践</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="pqt-qat.html#id1">1.1. 背景</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pqt-qat.html#id2">1.1.1. 读者</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pqt-qat.html#id3">1.1.2. 环境配置</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="pqt-qat.html#pqt-qat">1.2. 概述：PQT 与 QAT</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pqt-qat.html#ptq">1.2.1. PTQ 简介</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pqt-qat.html#qat">1.2.2. QAT 概述</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pqt-qat.html#id4">1.2.3. PTQ/QAT 统一的量化流程</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pqt-qat.html#id5">1.2.4. PTQ/QAT 量化策略</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="pqt-qat.html#id6">1.3. PTQ 和 QAT 的模块融合</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pqt-qat.html#id7">1.4. PTQ 实战</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pqt-qat.html#id8">1.5. QAT 实战</a></li>
+</ul>
+</li>
+</ul>
+</div>
 </section>
 
 
@@ -286,17 +342,17 @@ title="Print to PDF"
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="best-practice.html" title="上一页 页">
+    <a class='left-prev' id="prev-link" href="../intro.html" title="上一页 页">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">上一页</p>
-            <p class="prev-next-title">PTQ 与 QAT 量化实践（PyTorch）</p>
+            <p class="prev-next-title">概述</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="config.html" title="下一页 页">
+    <a class='right-next' id="next-link" href="pqt-qat.html" title="下一页 页">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">下一页</p>
-        <p class="prev-next-title">配置</p>
+        <p class="prev-next-title"><span class="section-number">1. </span>PTQ 与 QAT 实践</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>
@@ -310,7 +366,7 @@ title="Print to PDF"
     By xinetzone<br/>
   
       &copy; Copyright 2022, xinetzone.<br/>
-    Last updated on 2022-03-26, 10:27:19.<br/>
+    Last updated on 2022-03-28, 12:32:36.<br/>
 </p>
         </footer>
     </div>
@@ -322,7 +378,7 @@ title="Print to PDF"
     </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
 
 
   </body>

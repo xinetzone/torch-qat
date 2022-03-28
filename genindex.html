@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>索引 &#8212; torch_qat 0.0.1rc1 文档</title>
+    <title>索引 &#8212; torchq 0.0.1-alpha 文档</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -20,7 +20,7 @@
     href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
 
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=4fea3ae4a0a4ba949df0a89bbae557cc2ce861ae" type="text/css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=1cee231a2b06fec83dfdf5e1f90e99acd3529254" type="text/css" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
@@ -90,7 +90,7 @@
       <img src="_static/logo.jpg" class="logo" alt="logo">
       
       
-      <h1 class="site-logo" id="site-title">torch_qat 0.0.1rc1 文档</h1>
+      <h1 class="site-logo" id="site-title">torchq 0.0.1-alpha 文档</h1>
       
     </a>
 </div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
@@ -104,25 +104,59 @@
    概述
   </a>
  </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="best-practice.html">
-   PTQ 与 QAT 量化实践（PyTorch）
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="tutorial/index.html">
+   教程
   </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="tutorial/pqt-qat.html">
+     1. PTQ 与 QAT 实践
+    </a>
+   </li>
+  </ul>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="confuse.html">
-   融合
+  <a class="reference internal" href="dev/index.html">
+   开发者指南
   </a>
  </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="config.html">
-   配置
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="test/index.html">
+   测试
   </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="train.html">
-   训练
-  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="test/best-practice.html">
+     PTQ 与 QAT 量化实践（PyTorch）
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="test/confuse.html">
+     融合
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="test/config.html">
+     配置
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="test/train.html">
+     训练
+    </a>
+   </li>
+  </ul>
  </li>
 </ul>
 
@@ -237,7 +271,7 @@ title="Fullscreen mode"
     By xinetzone<br/>
   
       &copy; Copyright 2022, xinetzone.<br/>
-    Last updated on 2022-03-26, 10:27:19.<br/>
+    Last updated on 2022-03-28, 12:32:36.<br/>
 </p>
         </footer>
     </div>

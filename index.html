@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>PyTorch 量化教程 &#8212; torch_qat 0.0.1rc1 文档</title>
+    <title>PyTorch 量化教程 &#8212; torchq 0.0.1-alpha 文档</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -21,7 +21,7 @@
     href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
 
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=4fea3ae4a0a4ba949df0a89bbae557cc2ce861ae" type="text/css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=1cee231a2b06fec83dfdf5e1f90e99acd3529254" type="text/css" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
@@ -92,7 +92,7 @@
       <img src="_static/logo.jpg" class="logo" alt="logo">
       
       
-      <h1 class="site-logo" id="site-title">torch_qat 0.0.1rc1 文档</h1>
+      <h1 class="site-logo" id="site-title">torchq 0.0.1-alpha 文档</h1>
       
     </a>
 </div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
@@ -106,25 +106,59 @@
    概述
   </a>
  </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="best-practice.html">
-   PTQ 与 QAT 量化实践（PyTorch）
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="tutorial/index.html">
+   教程
   </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="tutorial/pqt-qat.html">
+     1. PTQ 与 QAT 实践
+    </a>
+   </li>
+  </ul>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="confuse.html">
-   融合
+  <a class="reference internal" href="dev/index.html">
+   开发者指南
   </a>
  </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="config.html">
-   配置
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="test/index.html">
+   测试
   </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="train.html">
-   训练
-  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="test/best-practice.html">
+     PTQ 与 QAT 量化实践（PyTorch）
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="test/confuse.html">
+     融合
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="test/config.html">
+     配置
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="test/train.html">
+     训练
+    </a>
+   </li>
+  </ul>
  </li>
 </ul>
 
@@ -271,12 +305,19 @@ title="Print to PDF"
     </div>
     <nav id="bd-toc-nav" aria-label="Page">
         <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#pypi">
-   支持 PyPI
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   PyTorch 量化教程
   </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#pypi">
+     支持 PyPI
+    </a>
+   </li>
+  </ul>
  </li>
- <li class="toc-h2 nav-item toc-entry">
+ <li class="toc-h1 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id1">
    目录和索引
   </a>
@@ -300,12 +341,19 @@ title="Print to PDF"
                         </div>
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#pypi">
-   支持 PyPI
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   PyTorch 量化教程
   </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#pypi">
+     支持 PyPI
+    </a>
+   </li>
+  </ul>
  </li>
- <li class="toc-h2 nav-item toc-entry">
+ <li class="toc-h1 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id1">
    目录和索引
   </a>
@@ -322,7 +370,7 @@ title="Print to PDF"
                 
   <section class="tex2jax_ignore mathjax_ignore" id="pytorch">
 <h1>PyTorch 量化教程<a class="headerlink" href="#pytorch" title="永久链接至标题">#</a></h1>
-<p><a class="reference external" href="https://pypi.org/project/torch-quantization/"><img alt="PyPI" src="https://img.shields.io/pypi/v/torchq.svg" /></a> <a class="reference external" href="https://github.com/xinetzone/torch-quantization/issues"><img alt="GitHub issues" src="https://img.shields.io/github/issues/xinetzone/torch-quantization" /></a> <a class="reference external" href="https://github.com/xinetzone/torch-quantization/network"><img alt="GitHub forks" src="https://img.shields.io/github/forks/xinetzone/torch-quantization" /></a> <a class="reference external" href="https://github.com/xinetzone/torch-quantization/stargazers"><img alt="GitHub stars" src="https://img.shields.io/github/stars/xinetzone/torch-quantization" /></a> <a class="reference external" href="https://github.com/xinetzone/torch-quantization/blob/main/LICENSE"><img alt="GitHub license" src="https://img.shields.io/github/license/xinetzone/torch-quantization" /></a> <img alt="repo size" src="https://img.shields.io/github/repo-size/xinetzone/torch-quantization.svg" /> <a class="reference external" href="https://github.com/xinetzone/torch-quantization/graphs/contributors"><img alt="contributors" src="https://img.shields.io/github/contributors/xinetzone/torch-quantization.svg" /></a> <a class="reference external" href="https://github.com/xinetzone/torch-quantization/watchers"><img alt="watcher" src="https://img.shields.io/github/watchers/xinetzone/torch-quantization.svg" /></a> <a class="reference external" href="https://github.com/xinetzone/pytorch-book/watchers"><img alt="watcher" src="https://img.shields.io/github/watchers/xinetzone/pytorch-book.svg" /></a> <a class="reference external" href="https://pepy.tech/project/torchq"><img alt="Downloads" src="https://pepy.tech/badge/torchq/week" /></a></p>
+<p><a class="reference external" href="https://pypi.org/project/torch-quantization/"><img alt="PyPI" src="https://img.shields.io/pypi/v/torchq.svg" /></a> <a class="reference external" href="https://github.com/xinetzone/torch-quantization/issues"><img alt="GitHub issues" src="https://img.shields.io/github/issues/xinetzone/torch-quantization" /></a> <a class="reference external" href="https://github.com/xinetzone/torch-quantization/network"><img alt="GitHub forks" src="https://img.shields.io/github/forks/xinetzone/torch-quantization" /></a> <a class="reference external" href="https://github.com/xinetzone/torch-quantization/stargazers"><img alt="GitHub stars" src="https://img.shields.io/github/stars/xinetzone/torch-quantization" /></a> <a class="reference external" href="https://github.com/xinetzone/torch-quantization/blob/main/LICENSE"><img alt="GitHub license" src="https://img.shields.io/github/license/xinetzone/torch-quantization" /></a> <img alt="repo size" src="https://img.shields.io/github/repo-size/xinetzone/torch-quantization.svg" /> <a class="reference external" href="https://github.com/xinetzone/torch-quantization/graphs/contributors"><img alt="contributors" src="https://img.shields.io/github/contributors/xinetzone/torch-quantization.svg" /></a> <a class="reference external" href="https://github.com/xinetzone/torch-quantization/watchers"><img alt="watcher" src="https://img.shields.io/github/watchers/xinetzone/torch-quantization.svg" /></a> <a class="reference external" href="https://github.com/xinetzone/pytorch-book/watchers"><img alt="watcher" src="https://img.shields.io/github/watchers/xinetzone/pytorch-book.svg" /></a> <a class="reference external" href="https://pepy.tech/project/torchq"><img alt="Downloads" src="https://pepy.tech/badge/torchq/week" /></a> <a class="reference external" href="https://pepy.tech/project/torchq"><img alt="Downloads" src="https://pepy.tech/badge/torchq" /></a></p>
 <section id="pypi">
 <h2>支持 PyPI<a class="headerlink" href="#pypi" title="永久链接至标题">#</a></h2>
 <p>需要安装 <code class="docutils literal notranslate"><span class="pre">torchq</span></code> 包：</p>
@@ -337,50 +385,59 @@ title="Print to PDF"
 <li class="toctree-l3"><a class="reference internal" href="intro.html#fx">（原型）FX 图模式量化</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="intro.html#id5">量化 API 参考</a></li>
-<li class="toctree-l2"><a class="reference internal" href="intro.html#id6">量化张量</a></li>
-<li class="toctree-l2"><a class="reference internal" href="intro.html#id7">原生支持的后端</a></li>
-<li class="toctree-l2"><a class="reference internal" href="intro.html#id8">量化定制</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="intro.html#id9">量化自定义模块 API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="intro.html#id3">量化 API 参考</a></li>
+<li class="toctree-l2"><a class="reference internal" href="intro.html#id4">量化张量</a></li>
+<li class="toctree-l2"><a class="reference internal" href="intro.html#id5">原生支持的后端</a></li>
+<li class="toctree-l2"><a class="reference internal" href="intro.html#id6">量化定制</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="intro.html#id7">量化自定义模块 API</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="intro.html#id10">量化模型准备（Eager 模式）</a></li>
-<li class="toctree-l2"><a class="reference internal" href="intro.html#id11">最佳实践（已废弃）</a></li>
-<li class="toctree-l2"><a class="reference internal" href="intro.html#id12">数值调试（原型）</a></li>
-<li class="toctree-l2"><a class="reference internal" href="intro.html#id13">常见错误</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="intro.html#id14">保存和加载量化模型</a></li>
-<li class="toctree-l3"><a class="reference internal" href="intro.html#id15">传递非量化的张量到量化的核</a></li>
-<li class="toctree-l3"><a class="reference internal" href="intro.html#id16">传递量化的张量到非量化的核</a></li>
+<li class="toctree-l2"><a class="reference internal" href="intro.html#id8">最佳实践（已废弃）</a></li>
+<li class="toctree-l2"><a class="reference internal" href="intro.html#id9">数值调试（原型）</a></li>
+<li class="toctree-l2"><a class="reference internal" href="intro.html#id10">常见错误</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="intro.html#id11">保存和加载量化模型</a></li>
+<li class="toctree-l3"><a class="reference internal" href="intro.html#id12">传递非量化的张量到量化的核</a></li>
+<li class="toctree-l3"><a class="reference internal" href="intro.html#id13">传递量化的张量到非量化的核</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="best-practice.html">PTQ 与 QAT 量化实践（PyTorch）</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="best-practice.html#id1">模块融合</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="best-practice.html#id2">算子替换</a></li>
-<li class="toctree-l3"><a class="reference internal" href="best-practice.html#id3">算子融合</a></li>
-<li class="toctree-l3"><a class="reference internal" href="best-practice.html#id4">示例</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial/index.html">教程</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="tutorial/pqt-qat.html">1. PTQ 与 QAT 实践</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="tutorial/pqt-qat.html#id1">1.1. 背景</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial/pqt-qat.html#pqt-qat">1.2. 概述：PQT 与 QAT</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial/pqt-qat.html#id6">1.3. PTQ 和 QAT 的模块融合</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial/pqt-qat.html#id7">1.4. PTQ 实战</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial/pqt-qat.html#id8">1.5. QAT 实战</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="best-practice.html#id5">量化配置</a></li>
-<li class="toctree-l2"><a class="reference internal" href="best-practice.html#id6">量化训练</a></li>
-<li class="toctree-l2"><a class="reference internal" href="best-practice.html#mobilenetv2">实战 MobileNetv2</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="confuse.html">融合</a></li>
-<li class="toctree-l1"><a class="reference internal" href="config.html">配置</a></li>
-<li class="toctree-l1"><a class="reference internal" href="train.html">训练</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dev/index.html">开发者指南</a></li>
+<li class="toctree-l1"><a class="reference internal" href="test/index.html">测试</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="test/best-practice.html">PTQ 与 QAT 量化实践（PyTorch）</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="test/best-practice.html#id1">模块融合</a></li>
+<li class="toctree-l3"><a class="reference internal" href="test/best-practice.html#id5">量化配置</a></li>
+<li class="toctree-l3"><a class="reference internal" href="test/best-practice.html#id6">量化训练</a></li>
+<li class="toctree-l3"><a class="reference internal" href="test/best-practice.html#mobilenetv2">实战 MobileNetv2</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="test/confuse.html">融合</a></li>
+<li class="toctree-l2"><a class="reference internal" href="test/config.html">配置</a></li>
+<li class="toctree-l2"><a class="reference internal" href="test/train.html">训练</a></li>
+</ul>
+</li>
 </ul>
 </div>
 </section>
-<section id="id1">
-<h2>目录和索引<a class="headerlink" href="#id1" title="永久链接至标题">#</a></h2>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="id1">
+<h1>目录和索引<a class="headerlink" href="#id1" title="永久链接至标题">#</a></h1>
 <ul class="simple">
 <li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">索引</span></a></p></li>
 <li><p><a class="reference internal" href="py-modindex.html"><span class="std std-ref">模块索引</span></a></p></li>
 <li><p><a class="reference internal" href="search.html"><span class="std std-ref">搜索页面</span></a></p></li>
 </ul>
-</section>
 </section>
 
 
@@ -408,7 +465,7 @@ title="Print to PDF"
     By xinetzone<br/>
   
       &copy; Copyright 2022, xinetzone.<br/>
-    Last updated on 2022-03-26, 10:27:19.<br/>
+    Last updated on 2022-03-28, 12:32:36.<br/>
 </p>
         </footer>
     </div>

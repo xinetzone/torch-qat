@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>概述 &#8212; torch_qat 0.0.1rc1 文档</title>
+    <title>概述 &#8212; torchq 0.0.1-alpha 文档</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -21,7 +21,7 @@
     href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
 
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=4fea3ae4a0a4ba949df0a89bbae557cc2ce861ae" type="text/css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=1cee231a2b06fec83dfdf5e1f90e99acd3529254" type="text/css" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
@@ -50,7 +50,7 @@
     <link rel="shortcut icon" href="_static/favicon.jpg"/>
     <link rel="index" title="索引" href="genindex.html" />
     <link rel="search" title="搜索" href="search.html" />
-    <link rel="next" title="PTQ 与 QAT 量化实践（PyTorch）" href="best-practice.html" />
+    <link rel="next" title="教程" href="tutorial/index.html" />
     <link rel="prev" title="PyTorch 量化教程" href="index.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="zh_CN">
@@ -95,7 +95,7 @@
       <img src="_static/logo.jpg" class="logo" alt="logo">
       
       
-      <h1 class="site-logo" id="site-title">torch_qat 0.0.1rc1 文档</h1>
+      <h1 class="site-logo" id="site-title">torchq 0.0.1-alpha 文档</h1>
       
     </a>
 </div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
@@ -109,25 +109,59 @@
    概述
   </a>
  </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="best-practice.html">
-   PTQ 与 QAT 量化实践（PyTorch）
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="tutorial/index.html">
+   教程
   </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="tutorial/pqt-qat.html">
+     1. PTQ 与 QAT 实践
+    </a>
+   </li>
+  </ul>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="confuse.html">
-   融合
+  <a class="reference internal" href="dev/index.html">
+   开发者指南
   </a>
  </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="config.html">
-   配置
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="test/index.html">
+   测试
   </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="train.html">
-   训练
-  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="test/best-practice.html">
+     PTQ 与 QAT 量化实践（PyTorch）
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="test/confuse.html">
+     融合
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="test/config.html">
+     配置
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="test/train.html">
+     训练
+    </a>
+   </li>
+  </ul>
  </li>
 </ul>
 
@@ -289,16 +323,6 @@ title="Print to PDF"
        动态量化
       </a>
      </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#id3">
-       静态量化
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#id4">
-       量化感知训练
-      </a>
-     </li>
     </ul>
    </li>
    <li class="toc-h3 nav-item toc-entry">
@@ -309,64 +333,59 @@ title="Print to PDF"
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id5">
+  <a class="reference internal nav-link" href="#id3">
    量化 API 参考
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id6">
+  <a class="reference internal nav-link" href="#id4">
    量化张量
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id7">
+  <a class="reference internal nav-link" href="#id5">
    原生支持的后端
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id8">
+  <a class="reference internal nav-link" href="#id6">
    量化定制
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id9">
+    <a class="reference internal nav-link" href="#id7">
      量化自定义模块 API
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id10">
-   量化模型准备（Eager 模式）
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id11">
+  <a class="reference internal nav-link" href="#id8">
    最佳实践（已废弃）
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id12">
+  <a class="reference internal nav-link" href="#id9">
    数值调试（原型）
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id13">
+  <a class="reference internal nav-link" href="#id10">
    常见错误
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id14">
+    <a class="reference internal nav-link" href="#id11">
      保存和加载量化模型
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id15">
+    <a class="reference internal nav-link" href="#id12">
      传递非量化的张量到量化的核
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id16">
+    <a class="reference internal nav-link" href="#id13">
      传递量化的张量到非量化的核
     </a>
    </li>
@@ -406,16 +425,6 @@ title="Print to PDF"
        动态量化
       </a>
      </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#id3">
-       静态量化
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#id4">
-       量化感知训练
-      </a>
-     </li>
     </ul>
    </li>
    <li class="toc-h3 nav-item toc-entry">
@@ -426,64 +435,59 @@ title="Print to PDF"
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id5">
+  <a class="reference internal nav-link" href="#id3">
    量化 API 参考
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id6">
+  <a class="reference internal nav-link" href="#id4">
    量化张量
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id7">
+  <a class="reference internal nav-link" href="#id5">
    原生支持的后端
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id8">
+  <a class="reference internal nav-link" href="#id6">
    量化定制
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id9">
+    <a class="reference internal nav-link" href="#id7">
      量化自定义模块 API
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id10">
-   量化模型准备（Eager 模式）
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id11">
+  <a class="reference internal nav-link" href="#id8">
    最佳实践（已废弃）
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id12">
+  <a class="reference internal nav-link" href="#id9">
    数值调试（原型）
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id13">
+  <a class="reference internal nav-link" href="#id10">
    常见错误
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id14">
+    <a class="reference internal nav-link" href="#id11">
      保存和加载量化模型
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id15">
+    <a class="reference internal nav-link" href="#id12">
      传递非量化的张量到量化的核
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id16">
+    <a class="reference internal nav-link" href="#id13">
      传递量化的张量到非量化的核
     </a>
    </li>
@@ -517,7 +521,7 @@ title="Print to PDF"
 <p>Eager 模式量化是 beta 特性。用户需要进行融合，并手动指定量化和反量化发生的位置，而且它只支持模块而不支持函数。FX 图模式量化是 PyTorch 中新的自动量化框架，目前它是原型（prototype）特性。它通过添加对函数的支持和量化过程的自动化，对 Eager 模式量化进行了改进，尽管人们可能需要重构模型，以使模型与 FX Graph 模式量化兼容（通过 <a class="reference external" href="https://pytorch.org/docs/stable/fx.html#module-torch.fx" title="(在 PyTorch v1.11.0)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">torch.fx</span></code></a> 符号可追溯（symbolically traceable））。</p>
 <div class="admonition note">
 <p class="admonition-title">备注</p>
-<p>FX 图模式量化预计不会在任意可能不是 symbolically traceable 的模型工作，我们会将其集成到域库 torchvision 和用户将能够量化模型类似于支持域的库与 FX 图模式量化。对于任意的模型，我们将提供一般的指导方针，但要让它实际工作，用户可能需要熟悉 <a class="reference external" href="https://pytorch.org/docs/stable/fx.html#module-torch.fx" title="(在 PyTorch v1.11.0)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">torch.fx</span></code></a>，特别是如何使模型具有符号可追溯性。</p>
+<p>FX 图模式量化预计不会在任意可能不是 symbolically traceable 的模型工作，将其集成到域库 torchvision 和用户将能够量化模型类似于支持域的库与 FX 图模式量化。对于任意的模型，提供一般的指导方针，但要让它实际工作，用户可能需要熟悉 <a class="reference external" href="https://pytorch.org/docs/stable/fx.html#module-torch.fx" title="(在 PyTorch v1.11.0)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">torch.fx</span></code></a>，特别是如何使模型具有符号可追溯性。</p>
 <p>新用户的量化鼓励尝试 FX 图模式量化首先，如果它不工作，用户可以尝试遵循<a class="reference external" href="https://pytorch.org/tutorials/prototype/fx_graph_mode_quant_guide.html">使用 FX 图模式量化</a>的指导方针或回落到 Eager 模式量化。</p>
 </div>
 <p>支持三种类型的量化：</p>
@@ -528,6 +532,7 @@ title="Print to PDF"
 </ol>
 <section id="eager">
 <h3>Eager 模式量化<a class="headerlink" href="#eager" title="永久链接至标题">#</a></h3>
+<p>分为动态量化、PTQ、QAT。</p>
 <section id="id2">
 <h4>动态量化<a class="headerlink" href="#id2" title="永久链接至标题">#</a></h4>
 <p>这是最简单的量化形式，其中权值（weight）提前量化，但在推理期间动态量化激活（activation）。这用于模型执行时由从内存中加载权重控制而不是计算矩阵乘法的情况。这适用于小批量的 LSTM 和 Transformer 类型模型。</p>
@@ -573,161 +578,6 @@ title="Print to PDF"
 </pre></div>
 </div>
 <p>要了解更多关于动态量化的信息，请参阅<a class="reference external" href="https://pytorch.org/tutorials/recipes/recipes/dynamic_quantization.html">动态量化教程</a>。</p>
-</section>
-<section id="id3">
-<h4>静态量化<a class="headerlink" href="#id3" title="永久链接至标题">#</a></h4>
-<p>静态量化（static quantization）对模型的权重和激活进行量化。它在可能的情况下将激活融合到前面的层中。它需要用具有代表性的数据集进行校准，以确定激活的最佳量化参数。当内存带宽和计算空间都很重要时，通常会使用训练后量化，而 CNN 就是其典型的用例。静态量化也被称为训练后量化（Post Training Quantization）或 PTQ。</p>
-<p class="rubric">示意图</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># 原始模型</span>
-<span class="c1"># 全部的张量和计算均在浮点上进行</span>
-<span class="n">previous_layer_fp32</span> <span class="o">--</span> <span class="n">linear_fp32</span> <span class="o">--</span> <span class="n">activation_fp32</span> <span class="o">--</span> <span class="n">next_layer_fp32</span>
-                    <span class="o">/</span>
-    <span class="n">linear_weight_fp32</span>
-
-<span class="c1"># 静态量化模型</span>
-<span class="c1"># weights 和 activations 在 int8 上</span>
-<span class="n">previous_layer_int8</span> <span class="o">--</span> <span class="n">linear_with_activation_int8</span> <span class="o">--</span> <span class="n">next_layer_int8</span>
-                    <span class="o">/</span>
-  <span class="n">linear_weight_int8</span>
-</pre></div>
-</div>
-<p class="rubric">示例</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">torch</span>
-
-<span class="c1"># 定义浮点模型，其中一些层可以被静态量化</span>
-<span class="k">class</span> <span class="nc">M</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
-        <span class="c1"># QuantStub 将张量从浮点转换为量化</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">quant</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">quantization</span><span class="o">.</span><span class="n">QuantStub</span><span class="p">()</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">conv</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Conv2d</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">relu</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">ReLU</span><span class="p">()</span>
-        <span class="c1"># DeQuantStub 将张量从量化转换为浮点</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">dequant</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">quantization</span><span class="o">.</span><span class="n">DeQuantStub</span><span class="p">()</span>
-
-    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
-        <span class="c1"># 手动指定张量将在量化模型中从浮点转换为量化的位置</span>
-        <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">quant</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-        <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">conv</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-        <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">relu</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-        <span class="c1"># 在量化模型中手动指定张量从量化到浮点的转换位置</span>
-        <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">dequant</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">x</span>
-
-<span class="c1"># 创建模型实例</span>
-<span class="n">model_fp32</span> <span class="o">=</span> <span class="n">M</span><span class="p">()</span>
-
-<span class="c1"># 要使静态量化逻辑工作，必须将模型设置为 eval 模式</span>
-<span class="n">model_fp32</span><span class="o">.</span><span class="n">eval</span><span class="p">()</span>
-
-<span class="c1"># 附加全局 qconfig，其中包含关于要附加哪种观测器的信息。</span>
-<span class="c1"># 使用 &#39;fbgemm&#39; 进行端推理，使用 &#39;qnnpack&#39; 进行移动端推理。</span>
-<span class="c1"># 其他量化配置，如选择对称或非对称量化和 MinMax 或 L2Norm 校准技术，可以在这里指定。</span>
-<span class="n">model_fp32</span><span class="o">.</span><span class="n">qconfig</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">quantization</span><span class="o">.</span><span class="n">get_default_qconfig</span><span class="p">(</span><span class="s1">&#39;fbgemm&#39;</span><span class="p">)</span>
-
-<span class="c1"># 融合 activation 到前面的层，在适用的地方。</span>
-<span class="c1"># 这需要根据模型架构手动完成。</span>
-<span class="c1"># 常见的融合包括 `conv + relu` 和 `conv + batchnorm + relu`</span>
-<span class="n">model_fp32_fused</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">quantization</span><span class="o">.</span><span class="n">fuse_modules</span><span class="p">(</span><span class="n">model_fp32</span><span class="p">,</span> <span class="p">[[</span><span class="s1">&#39;conv&#39;</span><span class="p">,</span> <span class="s1">&#39;relu&#39;</span><span class="p">]])</span>
-
-<span class="c1"># 准备静态量化模型。</span>
-<span class="c1"># 这将在模型中插入观测器，用于在校准期间观测激活（activation）张量。</span>
-<span class="n">model_fp32_prepared</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">quantization</span><span class="o">.</span><span class="n">prepare</span><span class="p">(</span><span class="n">model_fp32_fused</span><span class="p">)</span>
-
-<span class="c1"># 校准准备的模型，以确定量化参数的激活在现实世界的设置，校准具有代表性的数据集</span>
-<span class="n">input_fp32</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
-<span class="n">model_fp32_prepared</span><span class="p">(</span><span class="n">input_fp32</span><span class="p">)</span>
-
-<span class="c1"># 将观测到的模型转换为量化模型。</span>
-<span class="c1"># 这做了几件事：</span>
-<span class="c1"># 量化权重，计算和存储每个激活张量要使用的尺度（scale）和偏差（bias）值，并用量化实现替换关键算子。</span>
-<span class="n">model_int8</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">quantization</span><span class="o">.</span><span class="n">convert</span><span class="p">(</span><span class="n">model_fp32_prepared</span><span class="p">)</span>
-
-<span class="c1"># 运行模型，相关的计算将在 int8 中发生</span>
-<span class="n">res</span> <span class="o">=</span> <span class="n">model_int8</span><span class="p">(</span><span class="n">input_fp32</span><span class="p">)</span>
-</pre></div>
-</div>
-<p>要了解更多关于静态量化的信息，请参阅<a class="reference external" href="https://pytorch.org/tutorials/advanced/static_quantization_tutorial.html">静态量化教程</a>。</p>
-</section>
-<section id="id4">
-<h4>量化感知训练<a class="headerlink" href="#id4" title="永久链接至标题">#</a></h4>
-<p>与其他量化方法相比，量化感知训练（Quantization Aware Training）在训练过程中模拟量化的效果，允许更高的 accuracy。在训练过程中，所有的计算都是在浮点上进行的，使用 <code class="docutils literal notranslate"><span class="pre">fake_quant</span></code> 模块通过夹紧和舍入的方式对量化效果进行建模，模拟 INT8 的效果。模型转换后，权值和激活被量化，激活在可能的情况下被融合到前一层。它通常与 CNN 一起使用，与静态量化相比具有更高的 accuracy。量化感知训练也被称为 QAT。</p>
-<p class="rubric">示意图</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># 原始模型</span>
-<span class="c1"># 全部张量和计算均在浮点上</span>
-<span class="n">previous_layer_fp32</span> <span class="o">--</span> <span class="n">linear_fp32</span> <span class="o">--</span> <span class="n">activation_fp32</span> <span class="o">--</span> <span class="n">next_layer_fp32</span>
-                      <span class="o">/</span>
-    <span class="n">linear_weight_fp32</span>
-
-<span class="c1"># 在训练过程中使用 fake_quants 建模量化数值</span>
-<span class="n">previous_layer_fp32</span> <span class="o">--</span> <span class="n">fq</span> <span class="o">--</span> <span class="n">linear_fp32</span> <span class="o">--</span> <span class="n">activation_fp32</span> <span class="o">--</span> <span class="n">fq</span> <span class="o">--</span> <span class="n">next_layer_fp32</span>
-                           <span class="o">/</span>
-   <span class="n">linear_weight_fp32</span> <span class="o">--</span> <span class="n">fq</span>
-
-<span class="c1"># 量化模型</span>
-<span class="c1"># weights 和 activations 在 int8 上</span>
-<span class="n">previous_layer_int8</span> <span class="o">--</span> <span class="n">linear_with_activation_int8</span> <span class="o">--</span> <span class="n">next_layer_int8</span>
-                     <span class="o">/</span>
-   <span class="n">linear_weight_int8</span>
-</pre></div>
-</div>
-<p class="rubric">示例</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">torch</span>
-
-<span class="c1"># 定义浮点模型，其中一些层可以受益于 QAT</span>
-<span class="k">class</span> <span class="nc">M</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
-        <span class="c1"># QuantStub 将张量从浮点转换为量化</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">quant</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">quantization</span><span class="o">.</span><span class="n">QuantStub</span><span class="p">()</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">conv</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Conv2d</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">bn</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">BatchNorm2d</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">relu</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">ReLU</span><span class="p">()</span>
-        <span class="c1"># DeQuantStub 将张量从量化转换为浮点</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">dequant</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">quantization</span><span class="o">.</span><span class="n">DeQuantStub</span><span class="p">()</span>
-
-    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
-        <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">quant</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-        <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">conv</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-        <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">bn</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-        <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">relu</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-        <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">dequant</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">x</span>
-
-
-<span class="c1"># 创建模型实例</span>
-<span class="n">model_fp32</span> <span class="o">=</span> <span class="n">M</span><span class="p">()</span>
-
-<span class="c1"># 模型必须设置为训练模式，以便 QAT 逻辑工作</span>
-<span class="n">model_fp32</span><span class="o">.</span><span class="n">train</span><span class="p">()</span>
-
-<span class="c1"># 附加全局 qconfig，其中包含关于要附加哪种观测器的信息。</span>
-<span class="c1"># 使用 &#39;fbgemm&#39; 进行服务器端推理，使用 &#39;qnnpack&#39; 进行移动端推理。</span>
-<span class="c1"># 其他量化配置，如选择对称或非对称量化和 MinMax 或 L2Norm 校准技术，可以在这里指定。</span>
-<span class="n">model_fp32</span><span class="o">.</span><span class="n">qconfig</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">quantization</span><span class="o">.</span><span class="n">get_default_qat_qconfig</span><span class="p">(</span><span class="s1">&#39;fbgemm&#39;</span><span class="p">)</span>
-
-<span class="c1"># 将激活融合到前面的层，在适用的情况下，这需要根据模型体系结构手工完成</span>
-<span class="n">model_fp32_fused</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">quantization</span><span class="o">.</span><span class="n">fuse_modules</span><span class="p">(</span><span class="n">model_fp32</span><span class="p">,</span>
-                                                   <span class="p">[[</span><span class="s1">&#39;conv&#39;</span><span class="p">,</span> <span class="s1">&#39;bn&#39;</span><span class="p">,</span> <span class="s1">&#39;relu&#39;</span><span class="p">]])</span>
-
-<span class="c1"># 为 QAT 准备模型。</span>
-<span class="c1"># 这将在模型中插入观测者和 fake_quants，它们将在校准期间观测权值和激活张量。</span>
-<span class="n">model_fp32_prepared</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">quantization</span><span class="o">.</span><span class="n">prepare_qat</span><span class="p">(</span><span class="n">model_fp32_fused</span><span class="p">)</span>
-
-<span class="c1"># 运行训练循环（没有显示）</span>
-<span class="n">training_loop</span><span class="p">(</span><span class="n">model_fp32_prepared</span><span class="p">)</span>
-
-<span class="c1"># 将观测到的模型转换为量化模型。这有几件事：</span>
-<span class="c1"># 量化权重，计算和存储用于每个激活张量的尺度（scale）和偏差（bias）值，</span>
-<span class="c1"># 在适当的地方融合模块，并用量化实现替换关键算子。</span>
-<span class="n">model_fp32_prepared</span><span class="o">.</span><span class="n">eval</span><span class="p">()</span>
-<span class="n">model_int8</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">quantization</span><span class="o">.</span><span class="n">convert</span><span class="p">(</span><span class="n">model_fp32_prepared</span><span class="p">)</span>
-
-<span class="c1"># 运行模型，相关的计算将在 int8 中发生</span>
-<span class="n">res</span> <span class="o">=</span> <span class="n">model_int8</span><span class="p">(</span><span class="n">input_fp32</span><span class="p">)</span>
-</pre></div>
-</div>
-<p>要了解更多关于量化意识训练的信息，请参阅 <a class="reference external" href="https://pytorch.org/tutorials/advanced/static_quantization_tutorial.html">QAT 教程</a>。</p>
 </section>
 </section>
 <section id="fx">
@@ -821,12 +671,12 @@ title="Print to PDF"
 </ul>
 </section>
 </section>
-<section id="id5">
-<h2>量化 API 参考<a class="headerlink" href="#id5" title="永久链接至标题">#</a></h2>
+<section id="id3">
+<h2>量化 API 参考<a class="headerlink" href="#id3" title="永久链接至标题">#</a></h2>
 <p><a class="reference external" href="https://pytorch.org/docs/master/quantization-support.html">量化 API 参考</a>包含了量化 API 的文档，例如量化传递、量化张量操作以及支持的量化模块和函数。</p>
 </section>
-<section id="id6">
-<h2>量化张量<a class="headerlink" href="#id6" title="永久链接至标题">#</a></h2>
+<section id="id4">
+<h2>量化张量<a class="headerlink" href="#id4" title="永久链接至标题">#</a></h2>
 <p>PyTorch 支持逐张量和逐通道的非对称线性量化。逐张量意味着张量内的所有值都以相同的方式缩放。逐通道意味着对于每个维度，通常是张量的通道维度，张量中的值被不同的值缩放和偏移（实际上，缩放和偏移变成了向量）。这使得将张量转换为量化值的误差更小。</p>
 <p>映射是通过使用转换浮点张量来执行的：</p>
 <div class="math notranslate nohighlight">
@@ -836,8 +686,8 @@ Q(x, \text{scale}, \text{zero_point}) = \text{round}(\frac{x}{\text{scale}} + \t
 <p>请注意，我们确保浮点数中的零点在量化后不会出现错误，从而确保 padding 之类的运算不会导致额外的量化误差。</p>
 <p>为了在 PyTorch 中进行量化，需要能够用张量表示量化的数据。量化张量允许存储量化数据（表示为 int8/uint8/int32）以及量化参数，如 <code class="docutils literal notranslate"><span class="pre">scale</span></code> 和 <code class="docutils literal notranslate"><span class="pre">zero_point</span></code>。量化张量（Quantized Tensor）除了允许以量化格式对数据进行序列化外，还允许许多有用的运算使量化算术变得简单。</p>
 </section>
-<section id="id7">
-<h2>原生支持的后端<a class="headerlink" href="#id7" title="永久链接至标题">#</a></h2>
+<section id="id5">
+<h2>原生支持的后端<a class="headerlink" href="#id5" title="永久链接至标题">#</a></h2>
 <p>今天，PyTorch 支持以下后端来高效地运行量化算子：</p>
 <ul class="simple">
 <li><p>支持 AVX2 或更高版本的 x86 CPU（如果没有 AVX2，一些运算会低效实现），通过 <a class="reference external" href="https://github.com/pytorch/FBGEMM">fbgemm</a></p></li>
@@ -869,13 +719,13 @@ Q(x, \text{scale}, \text{zero_point}) = \text{round}(\frac{x}{\text{scale}} + \t
 </pre></div>
 </div>
 </section>
-<section id="id8">
-<h2>量化定制<a class="headerlink" href="#id8" title="永久链接至标题">#</a></h2>
+<section id="id6">
+<h2>量化定制<a class="headerlink" href="#id6" title="永久链接至标题">#</a></h2>
 <p>虽然提供了基于观测到的张量数据选择 scale 因子和 bias 的观测者的默认实现，但开发人员可以提供自己的量化函数。量化可以有选择地应用于模型的不同部分，也可以针对模型的不同部分进行不同的配置。</p>
 <p>PyTorch 还为 <code class="xref py py-func docutils literal notranslate"><span class="pre">conv2d()</span></code>、<code class="xref py py-func docutils literal notranslate"><span class="pre">conv3d()</span></code> 和 <code class="xref py py-func docutils literal notranslate"><span class="pre">linear()</span></code> 提供了逐通道量化的支持。</p>
 <p>量化工作流通过添加（例如添加观测者作为 <code class="docutils literal notranslate"><span class="pre">.observer</span></code> 子模块）或替换（例如转换 <code class="docutils literal notranslate"><span class="pre">nn.Conv2d</span></code> 为 <code class="docutils literal notranslate"><span class="pre">nn.quantized.Conv2d</span></code>）的子模块。这意味着模型在整个过程中保持常规的基于 <code class="docutils literal notranslate"><span class="pre">nn.Module</span></code> 的实例，因此可以与其他 PyTorch API 一起工作。</p>
-<section id="id9">
-<h3>量化自定义模块 API<a class="headerlink" href="#id9" title="永久链接至标题">#</a></h3>
+<section id="id7">
+<h3>量化自定义模块 API<a class="headerlink" href="#id7" title="永久链接至标题">#</a></h3>
 <p>Eager 模式和 FX 图模式量化 API 都为用户提供了钩子，用户可以通过自定义的方式指定量化模块，并使用用户定义的逻辑进行观测和量化。用户需要指定：</p>
 <ol class="simple">
 <li><p>源 fp32 模块的 Python 类型（存在于模型中）</p></li>
@@ -992,26 +842,12 @@ Q(x, \text{scale}, \text{zero_point}) = \text{round}(\frac{x}{\text{scale}} + \t
 </div>
 </section>
 </section>
-<section id="id10">
-<h2>量化模型准备（Eager 模式）<a class="headerlink" href="#id10" title="永久链接至标题">#</a></h2>
-<p>目前有必要在 Eager 模式量化之前对模型定义进行一些修改。这是因为目前的量化工作是基于一个模块一个模块的。特别地，对于所有量化技术，用户需要：</p>
-<ol class="simple">
-<li><p>将任何需要输出再量化请求的运算（因此有额外的参数）从函数形式转换为模块形式（例如，使用 <a class="reference external" href="https://pytorch.org/docs/stable/generated/torch.nn.ReLU.html#torch.nn.ReLU" title="(在 PyTorch v1.11.0)"><code class="xref py py-class docutils literal notranslate"><span class="pre">torch.nn.ReLU</span></code></a> 而不是 <a class="reference external" href="https://pytorch.org/docs/stable/generated/torch.nn.functional.relu.html#torch.nn.functional.relu" title="(在 PyTorch v1.11.0)"><code class="xref py py-func docutils literal notranslate"><span class="pre">torch.nn.functional.relu()</span></code></a>）。</p></li>
-<li><p>通过在子模块上指定 <code class="docutils literal notranslate"><span class="pre">.qconfig</span></code> 属性或指定 <code class="docutils literal notranslate"><span class="pre">qconfig_dict</span></code> 来指定模型的哪些部分需要量化。例如，设置 <code class="docutils literal notranslate"><span class="pre">model.conv1.qconfig</span> <span class="pre">=</span> <span class="pre">None</span></code> 表示 <code class="docutils literal notranslate"><span class="pre">model.conv1</span></code> 层不量化，设置 <code class="docutils literal notranslate"><span class="pre">model.linear1.qconfig</span> <span class="pre">=</span> <span class="pre">custom_qconfig</span></code> 表示 <code class="docutils literal notranslate"><span class="pre">model.linear1</span></code> 将使用 <code class="docutils literal notranslate"><span class="pre">custom_qconfig</span></code> 而不是全局 <code class="docutils literal notranslate"><span class="pre">qconfig</span></code>。</p></li>
-</ol>
-<p>对于量化激活的静态量化技术，用户还需要做以下工作：</p>
-<ol class="simple">
-<li><p>指定量化和反量化激活的位置。这是使用 <a class="reference external" href="https://xinetzone.github.io/pytorch-book/api/pytorch/ao/quantization/generated/torch.ao.quantization.stubs.QuantStub.html#torch.ao.quantization.stubs.QuantStub" title="(在 Pytorch Book)"><code class="xref py py-class docutils literal notranslate"><span class="pre">QuantStub</span></code></a> 和 <a class="reference external" href="https://xinetzone.github.io/pytorch-book/api/pytorch/ao/quantization/generated/torch.ao.quantization.stubs.DeQuantStub.html#torch.ao.quantization.stubs.DeQuantStub" title="(在 Pytorch Book)"><code class="xref py py-class docutils literal notranslate"><span class="pre">DeQuantStub</span></code></a> 模块完成的。</p></li>
-<li><p>使用 <a class="reference external" href="https://xinetzone.github.io/pytorch-book/api/pytorch/nn/generated/torch.nn.quantized.FloatFunctional.html#torch.nn.quantized.FloatFunctional" title="(在 Pytorch Book)"><code class="xref py py-class docutils literal notranslate"><span class="pre">FloatFunctional</span></code></a> 将需要对量化进行特殊处理的张量运算封装到模块中。例如像 <code class="xref py py-func docutils literal notranslate"><span class="pre">add()</span></code> 和 <code class="xref py py-func docutils literal notranslate"><span class="pre">cat()</span></code> 这样需要特殊处理来确定输出量化参数的运算。</p></li>
-<li><p>融合模块：将运算/模块组合成单个模块，获得更高的 accuracy 和性能。这是使用 <code class="xref py py-func docutils literal notranslate"><span class="pre">torch.ao.quantization.fuse_modules()</span></code> API 完成的，该 API 接受要融合的模块列表。目前支持以下融合：<code class="docutils literal notranslate"><span class="pre">[Conv,</span> <span class="pre">Relu]</span></code>、 <code class="docutils literal notranslate"><span class="pre">[Conv,</span> <span class="pre">BatchNorm]</span></code>、 <code class="docutils literal notranslate"><span class="pre">[Conv,</span> <span class="pre">BatchNorm,</span> <span class="pre">Relu]</span></code> 和 <code class="docutils literal notranslate"><span class="pre">[Linear,</span> <span class="pre">Relu]</span></code>。</p></li>
-</ol>
-</section>
-<section id="id11">
-<h2>最佳实践（已废弃）<a class="headerlink" href="#id11" title="永久链接至标题">#</a></h2>
+<section id="id8">
+<h2>最佳实践（已废弃）<a class="headerlink" href="#id8" title="永久链接至标题">#</a></h2>
 <p>如果你使用 <code class="docutils literal notranslate"><span class="pre">fbgemm</span></code> 后端，设置观测者的 <code class="docutils literal notranslate"><span class="pre">reduce_range</span></code> 参数为 <code class="docutils literal notranslate"><span class="pre">True</span></code>。该参数通过将量化数据类型的范围减少 1 位来防止某些 int8 指令的溢出。</p>
 </section>
-<section id="id12">
-<h2>数值调试（原型）<a class="headerlink" href="#id12" title="永久链接至标题">#</a></h2>
+<section id="id9">
+<h2>数值调试（原型）<a class="headerlink" href="#id9" title="永久链接至标题">#</a></h2>
 <div class="admonition warning">
 <p class="admonition-title">警告</p>
 <p>数值调试工具是早期的原型，可能会发生变化。</p>
@@ -1021,10 +857,10 @@ Q(x, \text{scale}, \text{zero_point}) = \text{round}(\frac{x}{\text{scale}} + \t
 <li><p><code class="xref py py-func docutils literal notranslate"><span class="pre">torch.ao.ns._numeric_suite_fx()</span></code> FX 数值套件</p></li>
 </ul>
 </section>
-<section id="id13">
-<h2>常见错误<a class="headerlink" href="#id13" title="永久链接至标题">#</a></h2>
-<section id="id14">
-<h3>保存和加载量化模型<a class="headerlink" href="#id14" title="永久链接至标题">#</a></h3>
+<section id="id10">
+<h2>常见错误<a class="headerlink" href="#id10" title="永久链接至标题">#</a></h2>
+<section id="id11">
+<h3>保存和加载量化模型<a class="headerlink" href="#id11" title="永久链接至标题">#</a></h3>
 <p>当调用 <a class="reference external" href="https://pytorch.org/docs/stable/generated/torch.load.html#torch.load" title="(在 PyTorch v1.11.0)"><code class="xref py py-func docutils literal notranslate"><span class="pre">torch.load()</span></code></a> 量化模型，如果你看到如下错误：</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="ne">AttributeError</span><span class="p">:</span> <span class="s1">&#39;LinearPackedParams&#39;</span> <span class="nb">object</span> <span class="n">has</span> <span class="n">no</span> <span class="n">attribute</span> <span class="s1">&#39;_modules&#39;</span>
 </pre></div>
@@ -1078,8 +914,8 @@ Q(x, \text{scale}, \text{zero_point}) = \text{round}(\frac{x}{\text{scale}} + \t
 </li>
 </ol>
 </section>
-<section id="id15">
-<h3>传递非量化的张量到量化的核<a class="headerlink" href="#id15" title="永久链接至标题">#</a></h3>
+<section id="id12">
+<h3>传递非量化的张量到量化的核<a class="headerlink" href="#id12" title="永久链接至标题">#</a></h3>
 <p>如果你看到类似的错误：</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="ne">RuntimeError</span><span class="p">:</span> <span class="n">Could</span> <span class="ow">not</span> <span class="n">run</span> <span class="s1">&#39;quantized::some_operator&#39;</span> <span class="k">with</span> <span class="n">arguments</span> <span class="kn">from</span> <span class="nn">the</span> <span class="s1">&#39;CPU&#39;</span> <span class="n">backend</span><span class="o">...</span>
 </pre></div>
@@ -1100,8 +936,8 @@ Q(x, \text{scale}, \text{zero_point}) = \text{round}(\frac{x}{\text{scale}} + \t
 </pre></div>
 </div>
 </section>
-<section id="id16">
-<h3>传递量化的张量到非量化的核<a class="headerlink" href="#id16" title="永久链接至标题">#</a></h3>
+<section id="id13">
+<h3>传递量化的张量到非量化的核<a class="headerlink" href="#id13" title="永久链接至标题">#</a></h3>
 <p>如果你看到类似的错误：</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="ne">RuntimeError</span><span class="p">:</span> <span class="n">Could</span> <span class="ow">not</span> <span class="n">run</span> <span class="s1">&#39;aten::thnn_conv2d_forward&#39;</span> <span class="k">with</span> <span class="n">arguments</span> <span class="kn">from</span> <span class="nn">the</span> <span class="s1">&#39;QuantizedCPU&#39;</span> <span class="n">backend</span><span class="o">.</span>
 </pre></div>
@@ -1152,10 +988,10 @@ Q(x, \text{scale}, \text{zero_point}) = \text{round}(\frac{x}{\text{scale}} + \t
             <p class="prev-next-title">PyTorch 量化教程</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="best-practice.html" title="下一页 页">
+    <a class='right-next' id="next-link" href="tutorial/index.html" title="下一页 页">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">下一页</p>
-        <p class="prev-next-title">PTQ 与 QAT 量化实践（PyTorch）</p>
+        <p class="prev-next-title">教程</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>
@@ -1169,7 +1005,7 @@ Q(x, \text{scale}, \text{zero_point}) = \text{round}(\frac{x}{\text{scale}} + \t
     By xinetzone<br/>
   
       &copy; Copyright 2022, xinetzone.<br/>
-    Last updated on 2022-03-26, 10:27:19.<br/>
+    Last updated on 2022-03-28, 12:32:36.<br/>
 </p>
         </footer>
     </div>

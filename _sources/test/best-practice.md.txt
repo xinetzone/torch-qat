@@ -105,8 +105,6 @@ def _fuse_modules(
 ```{include} resnet.txt
 ```
 
-![](images/resnet.png)
-
 ## 量化配置
 
 ## 量化训练
