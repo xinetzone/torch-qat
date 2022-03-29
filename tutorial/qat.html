@@ -1,0 +1,622 @@
+
+<!DOCTYPE html>
+
+<html lang="zh_CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>QAT &#8212; torchq 0.0.1-alpha 文档</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=62ba249389abaaa9ffc34bf36a076bdc1d65ee18" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/default.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=f31d14ad54b65d19161ba51d4ffff3a77ae00456"></script>
+    <script src="../_static/translations.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <link rel="shortcut icon" href="../_static/favicon.jpg"/>
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="搜索" href="../search.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="zh_CN">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../_static/logo.jpg" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">torchq 0.0.1-alpha 文档</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../intro.html">
+   概述
+  </a>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="index.html">
+   教程
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="pqt-qat.html">
+     1. PTQ 与 QAT 实践
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../dev/index.html">
+   开发者指南
+  </a>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../api/index.html">
+   量化 API
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../api/runner.html">
+     runner
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../api/xinet.html">
+     xinet
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../api/helper.html">
+     辅助工具
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../test/index.html">
+   测试
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../test/best-practice.html">
+     PTQ 与 QAT 量化实践（PyTorch）
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../test/confuse.html">
+     融合
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../test/config.html">
+     配置
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../test/train.html">
+     训练
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Theme by the <a href="https://ebp.jupyterbook.org">Executable Book Project</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+<a href="https://github.com/xinetzone/torch-quantization/edit/main/docs/tutorial/qat.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="bottom"
+title="Edit this page"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+
+</a>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../_sources/tutorial/qat.ipynb.txt"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>QAT</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section class="tex2jax_ignore mathjax_ignore" id="qat">
+<h1>QAT<a class="headerlink" href="#qat" title="永久链接至标题">#</a></h1>
+<p>载入库：</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">torch</span> <span class="kn">import</span> <span class="n">nn</span><span class="p">,</span> <span class="n">jit</span>
+<span class="c1"># from torch.ao.quantization.quantize import convert</span>
+<span class="kn">from</span> <span class="nn">torchvision.models.quantization</span> <span class="kn">import</span> <span class="n">mobilenet_v2</span>
+
+
+<span class="k">def</span> <span class="nf">create_model</span><span class="p">(</span><span class="n">num_classes</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
+                 <span class="n">quantize</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+                 <span class="n">pretrained</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;定义模型&#39;&#39;&#39;</span>
+    <span class="n">float_model</span> <span class="o">=</span> <span class="n">mobilenet_v2</span><span class="p">(</span><span class="n">pretrained</span><span class="o">=</span><span class="n">pretrained</span><span class="p">,</span>
+                               <span class="n">quantize</span><span class="o">=</span><span class="n">quantize</span><span class="p">)</span>
+    <span class="c1"># 匹配 ``num_classes``</span>
+    <span class="n">float_model</span><span class="o">.</span><span class="n">classifier</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">float_model</span><span class="o">.</span><span class="n">last_channel</span><span class="p">,</span>
+                                          <span class="n">num_classes</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">float_model</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">torch</span>
+<span class="n">torch</span><span class="o">.</span><span class="n">cuda</span><span class="o">.</span><span class="n">empty_cache</span><span class="p">()</span> <span class="c1"># 清空 GPU 缓存</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">cuda</span><span class="o">.</span><span class="n">memory_summary</span><span class="p">())</span> <span class="c1"># 打印显存</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>|===========================================================================|
+|                  PyTorch CUDA memory summary, device ID 0                 |
+|---------------------------------------------------------------------------|
+|            CUDA OOMs: 0            |        cudaMalloc retries: 0         |
+|===========================================================================|
+|        Metric         | Cur Usage  | Peak Usage | Tot Alloc  | Tot Freed  |
+|---------------------------------------------------------------------------|
+| Allocated memory      |       0 B  |       0 B  |       0 B  |       0 B  |
+|       from large pool |       0 B  |       0 B  |       0 B  |       0 B  |
+|       from small pool |       0 B  |       0 B  |       0 B  |       0 B  |
+|---------------------------------------------------------------------------|
+| Active memory         |       0 B  |       0 B  |       0 B  |       0 B  |
+|       from large pool |       0 B  |       0 B  |       0 B  |       0 B  |
+|       from small pool |       0 B  |       0 B  |       0 B  |       0 B  |
+|---------------------------------------------------------------------------|
+| GPU reserved memory   |       0 B  |       0 B  |       0 B  |       0 B  |
+|       from large pool |       0 B  |       0 B  |       0 B  |       0 B  |
+|       from small pool |       0 B  |       0 B  |       0 B  |       0 B  |
+|---------------------------------------------------------------------------|
+| Non-releasable memory |       0 B  |       0 B  |       0 B  |       0 B  |
+|       from large pool |       0 B  |       0 B  |       0 B  |       0 B  |
+|       from small pool |       0 B  |       0 B  |       0 B  |       0 B  |
+|---------------------------------------------------------------------------|
+| Allocations           |       0    |       0    |       0    |       0    |
+|       from large pool |       0    |       0    |       0    |       0    |
+|       from small pool |       0    |       0    |       0    |       0    |
+|---------------------------------------------------------------------------|
+| Active allocs         |       0    |       0    |       0    |       0    |
+|       from large pool |       0    |       0    |       0    |       0    |
+|       from small pool |       0    |       0    |       0    |       0    |
+|---------------------------------------------------------------------------|
+| GPU reserved segments |       0    |       0    |       0    |       0    |
+|       from large pool |       0    |       0    |       0    |       0    |
+|       from small pool |       0    |       0    |       0    |       0    |
+|---------------------------------------------------------------------------|
+| Non-releasable allocs |       0    |       0    |       0    |       0    |
+|       from large pool |       0    |       0    |       0    |       0    |
+|       from small pool |       0    |       0    |       0    |       0    |
+|---------------------------------------------------------------------------|
+| Oversize allocations  |       0    |       0    |       0    |       0    |
+|---------------------------------------------------------------------------|
+| Oversize GPU segments |       0    |       0    |       0    |       0    |
+|===========================================================================|
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 设置 warnings</span>
+<span class="kn">import</span> <span class="nn">warnings</span>
+<span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span>
+    <span class="n">action</span><span class="o">=</span><span class="s1">&#39;ignore&#39;</span><span class="p">,</span>
+    <span class="n">category</span><span class="o">=</span><span class="ne">DeprecationWarning</span><span class="p">,</span>
+    <span class="n">module</span><span class="o">=</span><span class="s1">&#39;.*&#39;</span>
+<span class="p">)</span>
+<span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span>
+    <span class="n">action</span><span class="o">=</span><span class="s1">&#39;ignore&#39;</span><span class="p">,</span>
+    <span class="n">module</span><span class="o">=</span><span class="s1">&#39;torch.ao.quantization&#39;</span>
+<span class="p">)</span>
+<span class="c1"># 载入自定义模块</span>
+<span class="kn">from</span> <span class="nn">mod</span> <span class="kn">import</span> <span class="n">load_mod</span>
+<span class="n">load_mod</span><span class="p">()</span>
+
+<span class="kn">from</span> <span class="nn">torchq.helper</span> <span class="kn">import</span> <span class="n">evaluate</span><span class="p">,</span> <span class="n">print_size_of_model</span><span class="p">,</span> <span class="n">load_model</span>
+
+<span class="k">def</span> <span class="nf">print_info</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">model_type</span><span class="p">,</span> <span class="n">num_eval</span><span class="p">,</span> <span class="n">criterion</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;打印信息&#39;&#39;&#39;</span>
+    <span class="n">print_size_of_model</span><span class="p">(</span><span class="n">model</span><span class="p">)</span>
+    <span class="n">top1</span><span class="p">,</span> <span class="n">top5</span> <span class="o">=</span> <span class="n">evaluate</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">criterion</span><span class="p">,</span> <span class="n">test_iter</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="se">\n</span><span class="si">{</span><span class="n">model_type</span><span class="si">}</span><span class="s1">：</span><span class="se">\n\t</span><span class="s1">&#39;</span>
+          <span class="sa">f</span><span class="s1">&#39;在 </span><span class="si">{</span><span class="n">num_eval</span><span class="si">}</span><span class="s1"> 张图片上评估 accuracy 为: </span><span class="si">{</span><span class="n">top1</span><span class="o">.</span><span class="n">avg</span><span class="si">:</span><span class="s1">2.5f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">create_qat_model</span><span class="p">(</span><span class="n">num_classes</span><span class="p">,</span>
+                     <span class="n">model_path</span><span class="p">,</span>
+                     <span class="n">quantize</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+    <span class="n">qat_model</span> <span class="o">=</span> <span class="n">create_model</span><span class="p">(</span><span class="n">quantize</span><span class="o">=</span><span class="n">quantize</span><span class="p">,</span>
+                             <span class="n">num_classes</span><span class="o">=</span><span class="n">num_classes</span><span class="p">)</span>
+    <span class="n">qat_model</span> <span class="o">=</span> <span class="n">load_model</span><span class="p">(</span><span class="n">qat_model</span><span class="p">,</span> <span class="n">model_path</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">qat_model</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ImportError</span><span class="g g-Whitespace">                               </span>Traceback (most recent call last)
+<span class="nn">/media/pc/data/4tb/xinet/web/torch-quantization/docs/tutorial/qat.ipynb Cell 4&#39;</span> in <span class="ni">&lt;cell line: 13&gt;</span><span class="nt">()</span>
+      <span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s1">&#39;vscode-notebook-cell://ssh-remote%2B10.16.11.3/media/pc/data/4tb/xinet/web/torch-quantization/docs/tutorial/qat.ipynb#ch0000003vscode-remote?line=7&#39;</span><span class="o">&gt;</span><span class="mi">8</span><span class="o">&lt;/</span><span class="n">a</span><span class="o">&gt;</span> <span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span>
+      <span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s1">&#39;vscode-notebook-cell://ssh-remote%2B10.16.11.3/media/pc/data/4tb/xinet/web/torch-quantization/docs/tutorial/qat.ipynb#ch0000003vscode-remote?line=8&#39;</span><span class="o">&gt;</span><span class="mi">9</span><span class="o">&lt;/</span><span class="n">a</span><span class="o">&gt;</span>     <span class="n">action</span><span class="o">=</span><span class="s1">&#39;ignore&#39;</span><span class="p">,</span>
+     <span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s1">&#39;vscode-notebook-cell://ssh-remote%2B10.16.11.3/media/pc/data/4tb/xinet/web/torch-quantization/docs/tutorial/qat.ipynb#ch0000003vscode-remote?line=9&#39;</span><span class="o">&gt;</span><span class="mi">10</span><span class="o">&lt;/</span><span class="n">a</span><span class="o">&gt;</span>     <span class="n">module</span><span class="o">=</span><span class="s1">&#39;torch.ao.quantization&#39;</span>
+     <span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s1">&#39;vscode-notebook-cell://ssh-remote%2B10.16.11.3/media/pc/data/4tb/xinet/web/torch-quantization/docs/tutorial/qat.ipynb#ch0000003vscode-remote?line=10&#39;</span><span class="o">&gt;</span><span class="mi">11</span><span class="o">&lt;/</span><span class="n">a</span><span class="o">&gt;</span> <span class="p">)</span>
+     <span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s1">&#39;vscode-notebook-cell://ssh-remote%2B10.16.11.3/media/pc/data/4tb/xinet/web/torch-quantization/docs/tutorial/qat.ipynb#ch0000003vscode-remote?line=11&#39;</span><span class="o">&gt;</span><span class="mi">12</span><span class="o">&lt;/</span><span class="n">a</span><span class="o">&gt;</span> <span class="c1"># 载入自定义模块</span>
+<span class="o">---&gt;</span> <span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s1">&#39;vscode-notebook-cell://ssh-remote%2B10.16.11.3/media/pc/data/4tb/xinet/web/torch-quantization/docs/tutorial/qat.ipynb#ch0000003vscode-remote?line=12&#39;</span><span class="o">&gt;</span><span class="mi">13</span><span class="o">&lt;/</span><span class="n">a</span><span class="o">&gt;</span> <span class="kn">from</span> <span class="nn">mod</span> <span class="kn">import</span> <span class="n">load_mod</span>
+     <span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s1">&#39;vscode-notebook-cell://ssh-remote%2B10.16.11.3/media/pc/data/4tb/xinet/web/torch-quantization/docs/tutorial/qat.ipynb#ch0000003vscode-remote?line=13&#39;</span><span class="o">&gt;</span><span class="mi">14</span><span class="o">&lt;/</span><span class="n">a</span><span class="o">&gt;</span> <span class="n">load_mod</span><span class="p">()</span>
+     <span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s1">&#39;vscode-notebook-cell://ssh-remote%2B10.16.11.3/media/pc/data/4tb/xinet/web/torch-quantization/docs/tutorial/qat.ipynb#ch0000003vscode-remote?line=15&#39;</span><span class="o">&gt;</span><span class="mi">16</span><span class="o">&lt;/</span><span class="n">a</span><span class="o">&gt;</span> <span class="kn">from</span> <span class="nn">torchq.helper</span> <span class="kn">import</span> <span class="n">evaluate</span><span class="p">,</span> <span class="n">print_size_of_model</span><span class="p">,</span> <span class="n">load_model</span>
+
+<span class="ne">ImportError</span>: cannot import name &#39;load_mod&#39; from &#39;mod&#39; (/media/pc/data/4tb/xinet/web/torch-quantization/docs/tutorial/mod.py)
+</pre></div>
+</div>
+</div>
+</div>
+<p>超参数设置：</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">saved_model_dir</span> <span class="o">=</span> <span class="s1">&#39;models/&#39;</span>
+<span class="n">float_model_file</span> <span class="o">=</span> <span class="s1">&#39;mobilenet_pretrained_float.pth&#39;</span>
+<span class="n">scripted_qat_model_file</span> <span class="o">=</span> <span class="s1">&#39;mobilenet_qat_scripted_quantized.pth&#39;</span>
+<span class="c1"># 超参数</span>
+<span class="n">float_model_path</span> <span class="o">=</span> <span class="n">saved_model_dir</span> <span class="o">+</span> <span class="n">float_model_file</span>
+<span class="n">batch_size</span> <span class="o">=</span> <span class="mi">16</span>
+<span class="n">num_classes</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="n">device</span> <span class="o">=</span> <span class="s1">&#39;cuda:0&#39;</span>
+<span class="n">num_epochs</span> <span class="o">=</span> <span class="mi">50</span>
+<span class="n">learning_rate</span> <span class="o">=</span> <span class="mf">5e-5</span>
+<span class="n">ylim</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.6</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+
+<span class="c1"># 设置评估策略</span>
+<span class="n">criterion</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">CrossEntropyLoss</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>加载数据集：</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">xinet</span> <span class="kn">import</span> <span class="n">CV</span>
+
+<span class="c1"># 为了 cifar10 匹配 ImageNet，需要将其 resize 到 224</span>
+<span class="n">train_iter</span><span class="p">,</span> <span class="n">test_iter</span> <span class="o">=</span> <span class="n">CV</span><span class="o">.</span><span class="n">load_data_cifar10</span><span class="p">(</span><span class="n">batch_size</span><span class="o">=</span><span class="n">batch_size</span><span class="p">,</span>
+                                             <span class="n">resize</span><span class="o">=</span><span class="mi">224</span><span class="p">)</span>
+<span class="n">num_eval</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">ys</span><span class="p">)</span> <span class="k">for</span> <span class="n">_</span><span class="p">,</span> <span class="n">ys</span> <span class="ow">in</span> <span class="n">test_iter</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>普通策略：</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">is_quantized_acc</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="n">is_freeze</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="n">param_group</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="n">qat_model</span> <span class="o">=</span> <span class="n">create_qat_model</span><span class="p">(</span><span class="n">num_classes</span><span class="p">,</span> <span class="n">float_model_path</span><span class="p">)</span>
+<span class="n">CV</span><span class="o">.</span><span class="n">train_fine_tuning</span><span class="p">(</span><span class="n">qat_model</span><span class="p">,</span> <span class="n">train_iter</span><span class="p">,</span> <span class="n">test_iter</span><span class="p">,</span>
+                     <span class="n">learning_rate</span><span class="o">=</span><span class="n">learning_rate</span><span class="p">,</span>
+                     <span class="n">num_epochs</span><span class="o">=</span><span class="n">num_epochs</span><span class="p">,</span>
+                     <span class="n">device</span><span class="o">=</span><span class="n">device</span><span class="p">,</span>
+                     <span class="n">param_group</span><span class="o">=</span><span class="n">param_group</span><span class="p">,</span>
+                     <span class="n">is_freeze</span><span class="o">=</span><span class="n">is_freeze</span><span class="p">,</span>
+                     <span class="n">is_quantized_acc</span><span class="o">=</span><span class="n">is_quantized_acc</span><span class="p">,</span>
+                     <span class="n">need_prepare</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                     <span class="n">ylim</span><span class="o">=</span><span class="n">ylim</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>冻结前几次训练的量化器以及观测器：</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">is_quantized_acc</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="n">is_freeze</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="n">param_group</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="n">qat_model</span> <span class="o">=</span> <span class="n">create_qat_model</span><span class="p">(</span><span class="n">num_classes</span><span class="p">,</span> <span class="n">float_model_path</span><span class="p">)</span>
+<span class="n">CV</span><span class="o">.</span><span class="n">train_fine_tuning</span><span class="p">(</span><span class="n">qat_model</span><span class="p">,</span> <span class="n">train_iter</span><span class="p">,</span> <span class="n">test_iter</span><span class="p">,</span>
+                     <span class="n">learning_rate</span><span class="o">=</span><span class="n">learning_rate</span><span class="p">,</span>
+                     <span class="n">num_epochs</span><span class="o">=</span><span class="n">num_epochs</span><span class="p">,</span>
+                     <span class="n">device</span><span class="o">=</span><span class="n">device</span><span class="p">,</span>
+                     <span class="n">param_group</span><span class="o">=</span><span class="n">param_group</span><span class="p">,</span>
+                     <span class="n">is_freeze</span><span class="o">=</span><span class="n">is_freeze</span><span class="p">,</span>
+                     <span class="n">is_quantized_acc</span><span class="o">=</span><span class="n">is_quantized_acc</span><span class="p">,</span>
+                     <span class="n">need_prepare</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                     <span class="n">ylim</span><span class="o">=</span><span class="n">ylim</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>输出量化精度：</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">is_quantized_acc</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="n">is_freeze</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="n">param_group</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="n">model_path</span> <span class="o">=</span> <span class="n">saved_model_dir</span> <span class="o">+</span> <span class="n">float_model_file</span>
+<span class="n">qat_model</span> <span class="o">=</span> <span class="n">create_qat_model</span><span class="p">(</span><span class="n">num_classes</span><span class="p">,</span> <span class="n">model_path</span><span class="p">)</span>
+<span class="n">CV</span><span class="o">.</span><span class="n">train_fine_tuning</span><span class="p">(</span><span class="n">qat_model</span><span class="p">,</span> <span class="n">train_iter</span><span class="p">,</span> <span class="n">test_iter</span><span class="p">,</span>
+                     <span class="n">learning_rate</span><span class="o">=</span><span class="n">learning_rate</span><span class="p">,</span>
+                     <span class="n">num_epochs</span><span class="o">=</span><span class="n">num_epochs</span><span class="p">,</span>
+                     <span class="n">device</span><span class="o">=</span><span class="n">device</span><span class="p">,</span>
+                     <span class="n">param_group</span><span class="o">=</span><span class="n">param_group</span><span class="p">,</span>
+                     <span class="n">is_freeze</span><span class="o">=</span><span class="n">is_freeze</span><span class="p">,</span>
+                     <span class="n">is_quantized_acc</span><span class="o">=</span><span class="n">is_quantized_acc</span><span class="p">,</span>
+                     <span class="n">need_prepare</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                     <span class="n">ylim</span><span class="o">=</span><span class="n">ylim</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>冻结前几次训练的观测器并且生成量化精度：</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">is_quantized_acc</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="n">is_freeze</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="n">param_group</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="n">qat_model</span> <span class="o">=</span> <span class="n">create_qat_model</span><span class="p">(</span><span class="n">num_classes</span><span class="p">,</span> <span class="n">float_model_path</span><span class="p">)</span>
+<span class="n">CV</span><span class="o">.</span><span class="n">train_fine_tuning</span><span class="p">(</span><span class="n">qat_model</span><span class="p">,</span> <span class="n">train_iter</span><span class="p">,</span> <span class="n">test_iter</span><span class="p">,</span>
+                     <span class="n">learning_rate</span><span class="o">=</span><span class="n">learning_rate</span><span class="p">,</span>
+                     <span class="n">num_epochs</span><span class="o">=</span><span class="n">num_epochs</span><span class="p">,</span>
+                     <span class="n">device</span><span class="o">=</span><span class="n">device</span><span class="p">,</span>
+                     <span class="n">param_group</span><span class="o">=</span><span class="n">param_group</span><span class="p">,</span>
+                     <span class="n">is_freeze</span><span class="o">=</span><span class="n">is_freeze</span><span class="p">,</span>
+                     <span class="n">is_quantized_acc</span><span class="o">=</span><span class="n">is_quantized_acc</span><span class="p">,</span>
+                     <span class="n">need_prepare</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                     <span class="n">ylim</span><span class="o">=</span><span class="n">ylim</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By xinetzone<br/>
+  
+      &copy; Copyright 2022, xinetzone.<br/>
+    Last updated on 2022-03-29, 07:41:20.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>
