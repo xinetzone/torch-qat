@@ -226,7 +226,7 @@ class CV:
     def train(net, train_iter, test_iter,
               loss, trainer, num_epochs,
               device='cpu',
-              need_prepare=False,
+              need_qconfig=False,
               is_freeze=False,
               is_quantized_acc=False,
               backend='fbgemm',
@@ -239,10 +239,10 @@ class CV:
                             legend=[f'{_ylim}train loss', 'train acc', 'test acc'])
         # nn.DataParallel(net, device_ids=devices).to(devices[0])
         net = net.to(device)
-        if need_prepare:
-            net.fuse_model()
+        if need_qconfig:
+            # net.fuse_model()
             net.qconfig = get_default_qat_qconfig(backend)
-            net = prepare_qat(net)
+            # net = prepare_qat(net)
         for epoch in range(num_epochs):
             metric = Accumulator(4)
             if is_freeze:
@@ -285,7 +285,7 @@ class CV:
                           device='cuda:0',
                           is_freeze=False,
                           is_quantized_acc=False,
-                          need_prepare=False,
+                          need_qconfig=False,
                           param_group=True,
                           ylim=[0, 1],
                           output_layer='classifier'):
@@ -302,9 +302,10 @@ class CV:
         else:
             trainer = torch.optim.SGD(net.parameters(), lr=learning_rate,
                                       weight_decay=0.001)
+        net.train()
         CV.train(net, train_iter, test_iter,
                  loss, trainer, num_epochs,
                  device, ylim=ylim,
-                 need_prepare=need_prepare,
+                 need_qconfig=need_qconfig,
                  is_freeze=is_freeze,
                  is_quantized_acc=is_quantized_acc)
