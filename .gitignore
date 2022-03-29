@@ -130,3 +130,7 @@ dmypy.json
 
 # sphinx
 output/
+
+# model or data
+data/
+models/
