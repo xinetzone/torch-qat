@@ -7,6 +7,7 @@
 intro
 tutorial/index
 dev/index
+api/index
 test/index
 ```
 
