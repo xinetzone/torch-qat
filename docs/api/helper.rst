@@ -1,7 +1,7 @@
 辅助工具
 ===========
 
-.. currentmodule:: helper
+.. currentmodule:: torchq.helper
 
 .. autosummary::
     :toctree: generated

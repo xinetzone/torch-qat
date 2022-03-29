@@ -1,7 +1,7 @@
 runner
 ==========
 
-.. currentmodule:: runner
+.. currentmodule:: torchq.runner
 
 .. autosummary::
     :toctree: generated

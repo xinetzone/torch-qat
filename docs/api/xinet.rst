@@ -1,7 +1,7 @@
 xinet
 ==========
 
-.. currentmodule:: xinet
+.. currentmodule:: torchq.xinet
 
 .. autosummary::
     :toctree: generated
