@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>QAT &#8212; torchq 0.0.1-alpha 文档</title>
+    <title>2. QAT 的不同训练策略 &#8212; torchq 0.0.1-alpha 文档</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -48,6 +48,8 @@
     <link rel="shortcut icon" href="../_static/favicon.jpg"/>
     <link rel="index" title="索引" href="../genindex.html" />
     <link rel="search" title="搜索" href="../search.html" />
+    <link rel="next" title="开发者指南" href="../dev/index.html" />
+    <link rel="prev" title="1. PTQ 与 QAT 实践" href="pqt-qat.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="zh_CN">
     
@@ -99,25 +101,30 @@
   <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
 </form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item active">
-        <ul class="nav bd-sidenav">
+        <ul class="current nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../intro.html">
    概述
   </a>
  </li>
- <li class="toctree-l1 has-children">
+ <li class="toctree-l1 current active has-children">
   <a class="reference internal" href="index.html">
    教程
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
   <label for="toctree-checkbox-1">
    <i class="fas fa-chevron-down">
    </i>
   </label>
-  <ul>
+  <ul class="current">
    <li class="toctree-l2">
     <a class="reference internal" href="pqt-qat.html">
      1. PTQ 与 QAT 实践
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     2. QAT 的不同训练策略
     </a>
    </li>
   </ul>
@@ -321,7 +328,7 @@ title="Print to PDF"
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>QAT</h1>
+                <h1>QAT 的不同训练策略</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -334,7 +341,7 @@ title="Print to PDF"
               <div>
                 
   <section class="tex2jax_ignore mathjax_ignore" id="qat">
-<h1>QAT<a class="headerlink" href="#qat" title="永久链接至标题">#</a></h1>
+<h1><span class="section-number">2. </span>QAT 的不同训练策略<a class="headerlink" href="#qat" title="永久链接至标题">#</a></h1>
 <p>载入库：</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -427,8 +434,7 @@ title="Print to PDF"
     <span class="n">module</span><span class="o">=</span><span class="s1">&#39;torch.ao.quantization&#39;</span>
 <span class="p">)</span>
 <span class="c1"># 载入自定义模块</span>
-<span class="kn">from</span> <span class="nn">mod</span> <span class="kn">import</span> <span class="n">load_mod</span>
-<span class="n">load_mod</span><span class="p">()</span>
+<span class="kn">from</span> <span class="nn">mod</span> <span class="kn">import</span> <span class="n">torchq</span>
 
 <span class="kn">from</span> <span class="nn">torchq.helper</span> <span class="kn">import</span> <span class="n">evaluate</span><span class="p">,</span> <span class="n">print_size_of_model</span><span class="p">,</span> <span class="n">load_model</span>
 
@@ -450,28 +456,11 @@ title="Print to PDF"
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">ImportError</span><span class="g g-Whitespace">                               </span>Traceback (most recent call last)
-<span class="nn">/media/pc/data/4tb/xinet/web/torch-quantization/docs/tutorial/qat.ipynb Cell 4&#39;</span> in <span class="ni">&lt;cell line: 13&gt;</span><span class="nt">()</span>
-      <span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s1">&#39;vscode-notebook-cell://ssh-remote%2B10.16.11.3/media/pc/data/4tb/xinet/web/torch-quantization/docs/tutorial/qat.ipynb#ch0000003vscode-remote?line=7&#39;</span><span class="o">&gt;</span><span class="mi">8</span><span class="o">&lt;/</span><span class="n">a</span><span class="o">&gt;</span> <span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span>
-      <span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s1">&#39;vscode-notebook-cell://ssh-remote%2B10.16.11.3/media/pc/data/4tb/xinet/web/torch-quantization/docs/tutorial/qat.ipynb#ch0000003vscode-remote?line=8&#39;</span><span class="o">&gt;</span><span class="mi">9</span><span class="o">&lt;/</span><span class="n">a</span><span class="o">&gt;</span>     <span class="n">action</span><span class="o">=</span><span class="s1">&#39;ignore&#39;</span><span class="p">,</span>
-     <span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s1">&#39;vscode-notebook-cell://ssh-remote%2B10.16.11.3/media/pc/data/4tb/xinet/web/torch-quantization/docs/tutorial/qat.ipynb#ch0000003vscode-remote?line=9&#39;</span><span class="o">&gt;</span><span class="mi">10</span><span class="o">&lt;/</span><span class="n">a</span><span class="o">&gt;</span>     <span class="n">module</span><span class="o">=</span><span class="s1">&#39;torch.ao.quantization&#39;</span>
-     <span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s1">&#39;vscode-notebook-cell://ssh-remote%2B10.16.11.3/media/pc/data/4tb/xinet/web/torch-quantization/docs/tutorial/qat.ipynb#ch0000003vscode-remote?line=10&#39;</span><span class="o">&gt;</span><span class="mi">11</span><span class="o">&lt;/</span><span class="n">a</span><span class="o">&gt;</span> <span class="p">)</span>
-     <span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s1">&#39;vscode-notebook-cell://ssh-remote%2B10.16.11.3/media/pc/data/4tb/xinet/web/torch-quantization/docs/tutorial/qat.ipynb#ch0000003vscode-remote?line=11&#39;</span><span class="o">&gt;</span><span class="mi">12</span><span class="o">&lt;/</span><span class="n">a</span><span class="o">&gt;</span> <span class="c1"># 载入自定义模块</span>
-<span class="o">---&gt;</span> <span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s1">&#39;vscode-notebook-cell://ssh-remote%2B10.16.11.3/media/pc/data/4tb/xinet/web/torch-quantization/docs/tutorial/qat.ipynb#ch0000003vscode-remote?line=12&#39;</span><span class="o">&gt;</span><span class="mi">13</span><span class="o">&lt;/</span><span class="n">a</span><span class="o">&gt;</span> <span class="kn">from</span> <span class="nn">mod</span> <span class="kn">import</span> <span class="n">load_mod</span>
-     <span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s1">&#39;vscode-notebook-cell://ssh-remote%2B10.16.11.3/media/pc/data/4tb/xinet/web/torch-quantization/docs/tutorial/qat.ipynb#ch0000003vscode-remote?line=13&#39;</span><span class="o">&gt;</span><span class="mi">14</span><span class="o">&lt;/</span><span class="n">a</span><span class="o">&gt;</span> <span class="n">load_mod</span><span class="p">()</span>
-     <span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s1">&#39;vscode-notebook-cell://ssh-remote%2B10.16.11.3/media/pc/data/4tb/xinet/web/torch-quantization/docs/tutorial/qat.ipynb#ch0000003vscode-remote?line=15&#39;</span><span class="o">&gt;</span><span class="mi">16</span><span class="o">&lt;/</span><span class="n">a</span><span class="o">&gt;</span> <span class="kn">from</span> <span class="nn">torchq.helper</span> <span class="kn">import</span> <span class="n">evaluate</span><span class="p">,</span> <span class="n">print_size_of_model</span><span class="p">,</span> <span class="n">load_model</span>
-
-<span class="ne">ImportError</span>: cannot import name &#39;load_mod&#39; from &#39;mod&#39; (/media/pc/data/4tb/xinet/web/torch-quantization/docs/tutorial/mod.py)
-</pre></div>
-</div>
-</div>
 </div>
 <p>超参数设置：</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">saved_model_dir</span> <span class="o">=</span> <span class="s1">&#39;models/&#39;</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">saved_model_dir</span> <span class="o">=</span> <span class="s1">&#39;models/draft/&#39;</span>
 <span class="n">float_model_file</span> <span class="o">=</span> <span class="s1">&#39;mobilenet_pretrained_float.pth&#39;</span>
 <span class="n">scripted_qat_model_file</span> <span class="o">=</span> <span class="s1">&#39;mobilenet_qat_scripted_quantized.pth&#39;</span>
 <span class="c1"># 超参数</span>
@@ -481,10 +470,7 @@ title="Print to PDF"
 <span class="n">device</span> <span class="o">=</span> <span class="s1">&#39;cuda:0&#39;</span>
 <span class="n">num_epochs</span> <span class="o">=</span> <span class="mi">50</span>
 <span class="n">learning_rate</span> <span class="o">=</span> <span class="mf">5e-5</span>
-<span class="n">ylim</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.6</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
-
-<span class="c1"># 设置评估策略</span>
-<span class="n">criterion</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">CrossEntropyLoss</span><span class="p">()</span>
+<span class="n">ylim</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.8</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
@@ -492,7 +478,7 @@ title="Print to PDF"
 <p>加载数据集：</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">xinet</span> <span class="kn">import</span> <span class="n">CV</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">torchq.xinet</span> <span class="kn">import</span> <span class="n">CV</span>
 
 <span class="c1"># 为了 cifar10 匹配 ImageNet，需要将其 resize 到 224</span>
 <span class="n">train_iter</span><span class="p">,</span> <span class="n">test_iter</span> <span class="o">=</span> <span class="n">CV</span><span class="o">.</span><span class="n">load_data_cifar10</span><span class="p">(</span><span class="n">batch_size</span><span class="o">=</span><span class="n">batch_size</span><span class="p">,</span>
@@ -501,43 +487,53 @@ title="Print to PDF"
 </pre></div>
 </div>
 </div>
-</div>
-<p>普通策略：</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">is_quantized_acc</span> <span class="o">=</span> <span class="kc">False</span>
-<span class="n">is_freeze</span> <span class="o">=</span> <span class="kc">False</span>
-<span class="n">param_group</span> <span class="o">=</span> <span class="kc">True</span>
-<span class="n">qat_model</span> <span class="o">=</span> <span class="n">create_qat_model</span><span class="p">(</span><span class="n">num_classes</span><span class="p">,</span> <span class="n">float_model_path</span><span class="p">)</span>
-<span class="n">CV</span><span class="o">.</span><span class="n">train_fine_tuning</span><span class="p">(</span><span class="n">qat_model</span><span class="p">,</span> <span class="n">train_iter</span><span class="p">,</span> <span class="n">test_iter</span><span class="p">,</span>
-                     <span class="n">learning_rate</span><span class="o">=</span><span class="n">learning_rate</span><span class="p">,</span>
-                     <span class="n">num_epochs</span><span class="o">=</span><span class="n">num_epochs</span><span class="p">,</span>
-                     <span class="n">device</span><span class="o">=</span><span class="n">device</span><span class="p">,</span>
-                     <span class="n">param_group</span><span class="o">=</span><span class="n">param_group</span><span class="p">,</span>
-                     <span class="n">is_freeze</span><span class="o">=</span><span class="n">is_freeze</span><span class="p">,</span>
-                     <span class="n">is_quantized_acc</span><span class="o">=</span><span class="n">is_quantized_acc</span><span class="p">,</span>
-                     <span class="n">need_prepare</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-                     <span class="n">ylim</span><span class="o">=</span><span class="n">ylim</span><span class="p">)</span>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Files already downloaded and verified
+Files already downloaded and verified
 </pre></div>
 </div>
 </div>
 </div>
+<p>普通策略：</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">torch.ao.quantization</span> <span class="kn">import</span> <span class="n">quantize_qat</span>
+
+<span class="n">model_path</span> <span class="o">=</span> <span class="n">saved_model_dir</span> <span class="o">+</span> <span class="n">float_model_file</span>
+<span class="n">qat_model</span> <span class="o">=</span> <span class="n">create_qat_model</span><span class="p">(</span><span class="n">num_classes</span><span class="p">,</span> <span class="n">model_path</span><span class="p">)</span>
+<span class="n">num_epochs</span> <span class="o">=</span> <span class="mi">30</span>
+<span class="n">ylim</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.8</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+<span class="n">device</span> <span class="o">=</span> <span class="s1">&#39;cuda:2&#39;</span>
+<span class="n">is_freeze</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="n">is_quantized_acc</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="n">need_qconfig</span> <span class="o">=</span> <span class="kc">True</span> <span class="c1"># 做一些 QAT 的量化配置工作</span>
+<span class="n">param_group</span> <span class="o">=</span> <span class="kc">True</span>
+
+<span class="c1"># 提供位置参数</span>
+<span class="n">args</span> <span class="o">=</span> <span class="p">[</span><span class="n">train_iter</span><span class="p">,</span>
+        <span class="n">test_iter</span><span class="p">,</span>
+        <span class="n">learning_rate</span><span class="p">,</span>
+        <span class="n">num_epochs</span><span class="p">,</span>
+        <span class="n">device</span><span class="p">,</span>
+        <span class="n">is_freeze</span><span class="p">,</span>
+        <span class="n">is_quantized_acc</span><span class="p">,</span>
+        <span class="n">need_qconfig</span><span class="p">,</span>
+        <span class="n">param_group</span><span class="p">,</span>
+        <span class="n">ylim</span><span class="p">]</span>
+
+<span class="n">quantized_model</span> <span class="o">=</span> <span class="n">quantize_qat</span><span class="p">(</span><span class="n">qat_model</span><span class="p">,</span> <span class="n">CV</span><span class="o">.</span><span class="n">train_fine_tuning</span><span class="p">,</span> <span class="n">args</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/qat_9_0.svg" src="../_images/qat_9_0.svg" /></div>
+</div>
 <p>冻结前几次训练的量化器以及观测器：</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">is_quantized_acc</span> <span class="o">=</span> <span class="kc">False</span>
-<span class="n">is_freeze</span> <span class="o">=</span> <span class="kc">True</span>
-<span class="n">param_group</span> <span class="o">=</span> <span class="kc">True</span>
-<span class="n">qat_model</span> <span class="o">=</span> <span class="n">create_qat_model</span><span class="p">(</span><span class="n">num_classes</span><span class="p">,</span> <span class="n">float_model_path</span><span class="p">)</span>
-<span class="n">CV</span><span class="o">.</span><span class="n">train_fine_tuning</span><span class="p">(</span><span class="n">qat_model</span><span class="p">,</span> <span class="n">train_iter</span><span class="p">,</span> <span class="n">test_iter</span><span class="p">,</span>
-                     <span class="n">learning_rate</span><span class="o">=</span><span class="n">learning_rate</span><span class="p">,</span>
-                     <span class="n">num_epochs</span><span class="o">=</span><span class="n">num_epochs</span><span class="p">,</span>
-                     <span class="n">device</span><span class="o">=</span><span class="n">device</span><span class="p">,</span>
-                     <span class="n">param_group</span><span class="o">=</span><span class="n">param_group</span><span class="p">,</span>
-                     <span class="n">is_freeze</span><span class="o">=</span><span class="n">is_freeze</span><span class="p">,</span>
-                     <span class="n">is_quantized_acc</span><span class="o">=</span><span class="n">is_quantized_acc</span><span class="p">,</span>
-                     <span class="n">need_prepare</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-                     <span class="n">ylim</span><span class="o">=</span><span class="n">ylim</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">args</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="n">args</span><span class="p">[</span><span class="mi">6</span><span class="p">]</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="n">quantized_model</span> <span class="o">=</span> <span class="n">quantize_qat</span><span class="p">(</span><span class="n">qat_model</span><span class="p">,</span> <span class="n">CV</span><span class="o">.</span><span class="n">train_fine_tuning</span><span class="p">,</span> <span class="n">args</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -545,20 +541,9 @@ title="Print to PDF"
 <p>输出量化精度：</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">is_quantized_acc</span> <span class="o">=</span> <span class="kc">True</span>
-<span class="n">is_freeze</span> <span class="o">=</span> <span class="kc">False</span>
-<span class="n">param_group</span> <span class="o">=</span> <span class="kc">True</span>
-<span class="n">model_path</span> <span class="o">=</span> <span class="n">saved_model_dir</span> <span class="o">+</span> <span class="n">float_model_file</span>
-<span class="n">qat_model</span> <span class="o">=</span> <span class="n">create_qat_model</span><span class="p">(</span><span class="n">num_classes</span><span class="p">,</span> <span class="n">model_path</span><span class="p">)</span>
-<span class="n">CV</span><span class="o">.</span><span class="n">train_fine_tuning</span><span class="p">(</span><span class="n">qat_model</span><span class="p">,</span> <span class="n">train_iter</span><span class="p">,</span> <span class="n">test_iter</span><span class="p">,</span>
-                     <span class="n">learning_rate</span><span class="o">=</span><span class="n">learning_rate</span><span class="p">,</span>
-                     <span class="n">num_epochs</span><span class="o">=</span><span class="n">num_epochs</span><span class="p">,</span>
-                     <span class="n">device</span><span class="o">=</span><span class="n">device</span><span class="p">,</span>
-                     <span class="n">param_group</span><span class="o">=</span><span class="n">param_group</span><span class="p">,</span>
-                     <span class="n">is_freeze</span><span class="o">=</span><span class="n">is_freeze</span><span class="p">,</span>
-                     <span class="n">is_quantized_acc</span><span class="o">=</span><span class="n">is_quantized_acc</span><span class="p">,</span>
-                     <span class="n">need_prepare</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-                     <span class="n">ylim</span><span class="o">=</span><span class="n">ylim</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">args</span><span class="p">[</span><span class="mi">6</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="n">args</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="n">quantized_model</span> <span class="o">=</span> <span class="n">quantize_qat</span><span class="p">(</span><span class="n">qat_model</span><span class="p">,</span> <span class="n">CV</span><span class="o">.</span><span class="n">train_fine_tuning</span><span class="p">,</span> <span class="n">args</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -566,19 +551,9 @@ title="Print to PDF"
 <p>冻结前几次训练的观测器并且生成量化精度：</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">is_quantized_acc</span> <span class="o">=</span> <span class="kc">True</span>
-<span class="n">is_freeze</span> <span class="o">=</span> <span class="kc">True</span>
-<span class="n">param_group</span> <span class="o">=</span> <span class="kc">True</span>
-<span class="n">qat_model</span> <span class="o">=</span> <span class="n">create_qat_model</span><span class="p">(</span><span class="n">num_classes</span><span class="p">,</span> <span class="n">float_model_path</span><span class="p">)</span>
-<span class="n">CV</span><span class="o">.</span><span class="n">train_fine_tuning</span><span class="p">(</span><span class="n">qat_model</span><span class="p">,</span> <span class="n">train_iter</span><span class="p">,</span> <span class="n">test_iter</span><span class="p">,</span>
-                     <span class="n">learning_rate</span><span class="o">=</span><span class="n">learning_rate</span><span class="p">,</span>
-                     <span class="n">num_epochs</span><span class="o">=</span><span class="n">num_epochs</span><span class="p">,</span>
-                     <span class="n">device</span><span class="o">=</span><span class="n">device</span><span class="p">,</span>
-                     <span class="n">param_group</span><span class="o">=</span><span class="n">param_group</span><span class="p">,</span>
-                     <span class="n">is_freeze</span><span class="o">=</span><span class="n">is_freeze</span><span class="p">,</span>
-                     <span class="n">is_quantized_acc</span><span class="o">=</span><span class="n">is_quantized_acc</span><span class="p">,</span>
-                     <span class="n">need_prepare</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-                     <span class="n">ylim</span><span class="o">=</span><span class="n">ylim</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">args</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="n">args</span><span class="p">[</span><span class="mi">6</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="n">quantized_model</span> <span class="o">=</span> <span class="n">quantize_qat</span><span class="p">(</span><span class="n">qat_model</span><span class="p">,</span> <span class="n">CV</span><span class="o">.</span><span class="n">train_fine_tuning</span><span class="p">,</span> <span class="n">args</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -593,6 +568,20 @@ title="Print to PDF"
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="pqt-qat.html" title="上一页 页">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">上一页</p>
+            <p class="prev-next-title"><span class="section-number">1. </span>PTQ 与 QAT 实践</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="../dev/index.html" title="下一页 页">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">下一页</p>
+        <p class="prev-next-title">开发者指南</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
 </div>
             </footer>
         </div>
@@ -603,7 +592,7 @@ title="Print to PDF"
     By xinetzone<br/>
   
       &copy; Copyright 2022, xinetzone.<br/>
-    Last updated on 2022-03-29, 07:52:32.<br/>
+    Last updated on 2022-03-30, 01:02:29.<br/>
 </p>
         </footer>
     </div>
